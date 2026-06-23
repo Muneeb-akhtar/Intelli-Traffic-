@@ -1,0 +1,26 @@
+# Intelli Traffic Checklist
+
+- [x] **1. Root Setup & Orchestration**
+  - [x] Initialize root `package.json` with multi-module commands
+  - [x] Create base README and instructions
+- [x] **2. Backend Decision Engine (`backend/`)**
+  - [x] Initialize Express.js app and install SQLite/ws dependencies
+  - [x] Implement the Core Adaptive Traffic Signal Timing Algorithm
+  - [x] Setup WebSocket server to broadcast real-time state changes
+  - [x] Implement HTTP API endpoints (`POST /api/density`, `GET /api/state`, `POST /api/override`)
+  - [x] Setup SQLite database model using sqlite3 to log transactions and analytics (custom JSON database wrapper to prevent binary errors on Windows)
+- [x] **3. Frontend Command Dashboard (`frontend/`)**
+  - [x] Initialize Vite + React + TypeScript + Tailwind CSS app
+  - [x] Create root styles, HSL color tokens, and layout
+  - [x] Design and build the 3D-like, interactive 4-Way Intersection Visualizer (pulsing lights, lane congestion meters)
+  - [x] Connect dashboard to WebSocket server for instant state syncing
+  - [x] Implement the Manual Override control panel
+  - [x] Integrate Chart.js or Recharts to visualize historical volume trends and efficiency metrics
+- [x] **4. AI Module (`ai_module/`)**
+  - [x] Write Python YOLOv8 lane-wise object classification script (`detector.py`)
+  - [x] Create mock density simulator for easy testing without Python (`simulator.py`)
+  - [x] Create environment configuration files and setup `requirements.txt`
+- [x] **5. Verification & Final Review**
+  - [x] Verify manual override transitions and safety guards
+  - [x] Test system under high-density scenarios
+  - [x] Write comprehensive [walkthrough.md](file:///C:/Users/dell/.gemini/antigravity/brain/380304a1-91b1-4c11-831d-da2980eb39ea/walkthrough.md)

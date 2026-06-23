@@ -1,0 +1,4673 @@
+{
+  "densityRecords": [
+    {
+      "timestamp": "2026-06-19T20:44:22.632Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 7,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 4,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 2,
+          "motorcycle": 1,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:24.583Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 7,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 8,
+          "motorcycle": 2,
+          "truck": 1,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 5,
+          "motorcycle": 3,
+          "truck": 2,
+          "bus": 2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:26.591Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 2,
+          "truck": 1,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 7,
+          "motorcycle": 6,
+          "truck": 3,
+          "bus": 2
+        },
+        "Eastbound": {
+          "car": 7,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 4,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:28.605Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 6,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 8,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 1
+        },
+        "Eastbound": {
+          "car": 8,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 2,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:30.599Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 11,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 8,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 1
+        },
+        "Westbound": {
+          "car": 5,
+          "motorcycle": 1,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:32.596Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 5,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 8,
+          "motorcycle": 4,
+          "truck": 2,
+          "bus": 2
+        },
+        "Eastbound": {
+          "car": 3,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 3,
+          "motorcycle": 0,
+          "truck": 4,
+          "bus": 2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:34.596Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 10,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 11,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 4,
+          "motorcycle": 1,
+          "truck": 2,
+          "bus": 2
+        },
+        "Westbound": {
+          "car": 6,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:36.597Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 4,
+          "truck": 3,
+          "bus": 1
+        },
+        "Southbound": {
+          "car": 10,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 7,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 1
+        },
+        "Westbound": {
+          "car": 3,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:38.593Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 11,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 1
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 3,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:40.584Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 9,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 3,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 4,
+          "motorcycle": 0,
+          "truck": 1,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:42.583Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 10,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 12,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 3,
+          "motorcycle": 1,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 6,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:44.603Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 6,
+          "truck": 1,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 7,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 3,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 6,
+          "motorcycle": 0,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:46.597Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 6,
+          "truck": 1,
+          "bus": 2
+        },
+        "Southbound": {
+          "car": 11,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 3,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 1
+        },
+        "Westbound": {
+          "car": 5,
+          "motorcycle": 1,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:48.607Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 10,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 9,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 7,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:50.595Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 7,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 1
+        },
+        "Southbound": {
+          "car": 11,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 1
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 1,
+          "truck": 4,
+          "bus": 2
+        },
+        "Westbound": {
+          "car": 4,
+          "motorcycle": 3,
+          "truck": 2,
+          "bus": 2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:52.591Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 10,
+          "motorcycle": 5,
+          "truck": 1,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 12,
+          "motorcycle": 4,
+          "truck": 3,
+          "bus": 2
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 2,
+          "truck": 1,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 2,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:54.589Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 3,
+          "truck": 3,
+          "bus": 2
+        },
+        "Southbound": {
+          "car": 8,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 8,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 3,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:56.605Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 8,
+          "motorcycle": 5,
+          "truck": 1,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 12,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 1
+        },
+        "Eastbound": {
+          "car": 7,
+          "motorcycle": 2,
+          "truck": 3,
+          "bus": 1
+        },
+        "Westbound": {
+          "car": 5,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:44:58.591Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 9,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 10,
+          "motorcycle": 5,
+          "truck": 1,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 5,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 2,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:45:00.614Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 11,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 1
+        },
+        "Southbound": {
+          "car": 7,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 1
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 4,
+          "truck": 4,
+          "bus": 1
+        },
+        "Westbound": {
+          "car": 7,
+          "motorcycle": 1,
+          "truck": 4,
+          "bus": 2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:45:02.589Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 12,
+          "motorcycle": 5,
+          "truck": 1,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 9,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 6,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 3,
+          "motorcycle": 1,
+          "truck": 3,
+          "bus": 1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:45:04.598Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 12,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 0
+        },
+        "Southbound": {
+          "car": 8,
+          "motorcycle": 5,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 5,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 0
+        },
+        "Westbound": {
+          "car": 5,
+          "motorcycle": 3,
+          "truck": 0,
+          "bus": 1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-19T20:45:06.596Z",
+      "laneCounts": {
+        "Northbound": {
+          "car": 10,
+          "motorcycle": 4,
+          "truck": 0,
+          "bus": 1
+        },
+        "Southbound": {
+          "car": 12,
+          "motorcycle": 6,
+          "truck": 0,
+          "bus": 0
+        },
+        "Eastbound": {
+          "car": 7,
+          "motorcycle": 3,
+          "truck": 1,
+          "bus": 2
+        },
+        "Westbound": {
+          "car": 8,
+          "motorcycle": 2,
+          "truck": 0,
+          "bus": 1
+        }
+      }
+    }
+  ],
+  "signalTransitions": [
+    {
+      "timestamp": "2026-06-23T19:03:01.094Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:03:05.098Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:03:08.114Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:04:09.427Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:04:13.445Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:04:16.459Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:05:17.722Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:05:21.746Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:05:24.753Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:06:26.282Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:06:30.299Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:06:33.299Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:07:34.628Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:07:38.656Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:07:41.660Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:08:42.986Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:08:47.006Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:08:50.018Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:09:51.329Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:09:55.360Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:09:58.379Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:10:59.776Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:11:03.792Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:11:06.822Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:12:08.152Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:12:12.198Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:12:15.201Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:13:16.542Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:13:20.558Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:13:23.559Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:14:24.885Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:14:28.901Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:14:31.916Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:15:33.198Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:15:37.228Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:15:40.246Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:16:41.545Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:16:45.558Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:16:48.571Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:17:49.806Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:17:53.802Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:17:56.815Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:18:58.033Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:19:02.058Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:19:05.082Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:20:06.354Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:20:10.384Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:20:13.401Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:21:14.682Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:21:18.712Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:21:21.728Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:22:22.994Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:22:27.017Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:22:30.036Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:23:31.316Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:23:35.336Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:23:38.363Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:24:39.645Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:24:43.664Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:24:46.678Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:25:48.011Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:25:52.019Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:25:55.034Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:26:56.384Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:27:00.416Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:27:03.431Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:28:04.757Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:28:08.773Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:28:11.806Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:29:13.154Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:29:17.191Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:29:20.218Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:30:21.552Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:30:25.591Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:30:28.610Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:31:29.937Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:31:33.953Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:31:36.967Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:32:38.246Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:32:42.250Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:32:45.276Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:33:46.605Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:33:50.620Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:33:53.625Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:34:55.366Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:34:59.411Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:35:02.453Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:36:03.954Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:36:07.986Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:36:10.990Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:37:12.432Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:37:16.464Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:37:19.499Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:38:20.923Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:38:24.927Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:38:27.955Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:39:29.359Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:39:33.393Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:39:36.423Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:40:37.763Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:40:41.780Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:40:44.798Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:41:46.255Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:41:50.297Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:41:53.329Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:42:54.748Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:42:58.789Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:43:01.807Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:44:03.239Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:44:07.264Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:44:10.288Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:45:11.709Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:45:15.735Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:45:18.752Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:46:20.350Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:46:24.370Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:46:27.410Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:47:28.844Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:47:32.898Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:47:35.938Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:48:37.576Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:48:41.614Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:48:44.636Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:49:46.124Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:49:50.151Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:49:53.159Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:50:54.595Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:50:58.629Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:51:01.658Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:52:03.110Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:52:07.124Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:52:10.137Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:53:11.597Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:53:15.613Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:53:18.640Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:54:20.176Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:54:24.206Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:54:27.217Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:55:28.603Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:55:32.622Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:55:35.652Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:56:37.122Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:56:41.171Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:56:44.173Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:57:45.713Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:57:49.744Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:57:52.770Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T19:58:54.170Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T19:58:58.199Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T19:59:01.220Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:00:02.673Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:00:06.678Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:00:09.686Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:01:11.083Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:01:15.085Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:01:18.094Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:02:19.622Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:02:23.637Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:02:26.665Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:03:28.111Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:03:32.150Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:03:35.166Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:04:36.721Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:04:40.742Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:04:43.745Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:05:45.386Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:05:49.419Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:05:52.436Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:06:53.995Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:06:58.023Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:07:01.082Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:08:02.502Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:08:06.538Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:08:09.554Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:09:11.016Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:09:15.053Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:09:18.063Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:10:19.550Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:10:23.585Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:10:26.617Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:11:28.074Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:11:32.100Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:11:35.125Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:12:36.709Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:12:40.728Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:12:43.751Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:13:45.259Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:13:49.289Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:13:52.313Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:14:53.805Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:14:57.834Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:15:00.857Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:16:02.198Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:16:06.221Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:16:09.246Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:17:10.658Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:17:14.691Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:17:17.706Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:18:19.185Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:18:23.206Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:18:26.233Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:19:27.637Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:19:31.663Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:19:34.706Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:20:36.224Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:20:40.256Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:20:43.268Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:21:44.752Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:21:48.783Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:21:51.822Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:22:53.300Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:22:57.314Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:23:00.325Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:24:01.768Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:24:05.762Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:24:08.817Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:25:10.228Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:25:14.256Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:25:17.279Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:26:18.738Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:26:22.759Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:26:25.766Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:27:27.238Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:27:31.271Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:27:34.297Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:28:35.845Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:28:39.891Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:28:42.925Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:29:44.632Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:29:48.675Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:29:51.712Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:30:53.389Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:30:57.430Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:31:00.464Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:32:02.137Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:32:06.175Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:32:09.204Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:33:10.859Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:33:14.893Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:33:17.929Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:34:19.616Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:34:23.661Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:34:26.695Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:35:28.259Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:35:32.303Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:35:35.345Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:36:37.024Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:36:41.077Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:36:44.112Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:37:45.817Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:37:49.859Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:37:52.881Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:38:54.531Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:38:58.560Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:39:01.577Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:40:03.041Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:40:07.081Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:40:10.099Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:41:11.569Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:41:15.612Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:41:18.618Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:42:20.064Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:42:24.095Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:42:27.116Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:43:28.622Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:43:32.652Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:43:35.670Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:44:37.183Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:44:41.214Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:44:44.234Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:45:45.704Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:45:49.742Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:45:52.774Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:46:54.249Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:46:58.282Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:47:01.304Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:48:02.703Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:48:06.751Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:48:09.766Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:49:11.320Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:49:15.369Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:49:18.367Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:50:19.822Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:50:23.852Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:50:26.888Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:51:28.357Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:51:32.393Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:51:35.400Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:52:36.862Z",
+      "fromState": "Southbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:52:40.875Z",
+      "fromState": "Southbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:52:43.909Z",
+      "fromState": "RED",
+      "toState": "Eastbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:53:45.339Z",
+      "fromState": "Eastbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:53:49.367Z",
+      "fromState": "Eastbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:53:52.389Z",
+      "fromState": "RED",
+      "toState": "Westbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:54:53.978Z",
+      "fromState": "Westbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:54:58.025Z",
+      "fromState": "Westbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:55:01.059Z",
+      "fromState": "RED",
+      "toState": "Northbound",
+      "durationSeconds": 60
+    },
+    {
+      "timestamp": "2026-06-23T20:56:02.693Z",
+      "fromState": "Northbound",
+      "toState": "YELLOW",
+      "durationSeconds": 3
+    },
+    {
+      "timestamp": "2026-06-23T20:56:06.704Z",
+      "fromState": "Northbound",
+      "toState": "RED",
+      "durationSeconds": 2
+    },
+    {
+      "timestamp": "2026-06-23T20:56:09.740Z",
+      "fromState": "RED",
+      "toState": "Southbound",
+      "durationSeconds": 60
+    }
+  ],
+  "overrideEvents": [],
+  "hourlyAnalytics": [
+    {
+      "timestamp": "2026-05-17T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 37,
+        "Southbound": 38,
+        "Eastbound": 27,
+        "Westbound": 26
+      },
+      "totalVehicles": 128,
+      "averageWaitSeconds": 55,
+      "congestionIndex": 86
+    },
+    {
+      "timestamp": "2026-05-17T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 46,
+        "Southbound": 42,
+        "Eastbound": 28,
+        "Westbound": 30
+      },
+      "totalVehicles": 146,
+      "averageWaitSeconds": 58,
+      "congestionIndex": 94
+    },
+    {
+      "timestamp": "2026-05-17T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 46,
+        "Southbound": 45,
+        "Eastbound": 28,
+        "Westbound": 26
+      },
+      "totalVehicles": 145,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 89
+    },
+    {
+      "timestamp": "2026-05-17T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 12,
+        "Eastbound": 10,
+        "Westbound": 8
+      },
+      "totalVehicles": 41,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 31
+    },
+    {
+      "timestamp": "2026-05-17T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 19,
+        "Southbound": 19,
+        "Eastbound": 14,
+        "Westbound": 15
+      },
+      "totalVehicles": 67,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 40
+    },
+    {
+      "timestamp": "2026-05-17T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 14,
+        "Southbound": 19,
+        "Eastbound": 11,
+        "Westbound": 14
+      },
+      "totalVehicles": 58,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 37
+    },
+    {
+      "timestamp": "2026-05-17T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 20,
+        "Eastbound": 8,
+        "Westbound": 9
+      },
+      "totalVehicles": 50,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 36
+    },
+    {
+      "timestamp": "2026-05-17T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 8,
+        "Eastbound": 9,
+        "Westbound": 8
+      },
+      "totalVehicles": 37,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-17T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 9,
+        "Eastbound": 8,
+        "Westbound": 6
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-17T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 9,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 36,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-17T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 10,
+        "Eastbound": 8,
+        "Westbound": 5
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-17T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 13,
+        "Eastbound": 5,
+        "Westbound": 8
+      },
+      "totalVehicles": 35,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 9,
+        "Eastbound": 3,
+        "Westbound": 9
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 6,
+        "Eastbound": 6,
+        "Westbound": 6
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 13,
+        "Eastbound": 4,
+        "Westbound": 5
+      },
+      "totalVehicles": 35,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 44,
+        "Eastbound": 30,
+        "Westbound": 26
+      },
+      "totalVehicles": 145,
+      "averageWaitSeconds": 62,
+      "congestionIndex": 90
+    },
+    {
+      "timestamp": "2026-05-18T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 43,
+        "Southbound": 43,
+        "Eastbound": 29,
+        "Westbound": 31
+      },
+      "totalVehicles": 146,
+      "averageWaitSeconds": 64,
+      "congestionIndex": 96
+    },
+    {
+      "timestamp": "2026-05-18T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 41,
+        "Southbound": 41,
+        "Eastbound": 27,
+        "Westbound": 32
+      },
+      "totalVehicles": 141,
+      "averageWaitSeconds": 54,
+      "congestionIndex": 91
+    },
+    {
+      "timestamp": "2026-05-18T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 26,
+        "Southbound": 29,
+        "Eastbound": 17,
+        "Westbound": 15
+      },
+      "totalVehicles": 87,
+      "averageWaitSeconds": 54,
+      "congestionIndex": 56
+    },
+    {
+      "timestamp": "2026-05-18T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 30,
+        "Southbound": 31,
+        "Eastbound": 20,
+        "Westbound": 20
+      },
+      "totalVehicles": 101,
+      "averageWaitSeconds": 50,
+      "congestionIndex": 66
+    },
+    {
+      "timestamp": "2026-05-18T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 23,
+        "Southbound": 28,
+        "Eastbound": 15,
+        "Westbound": 19
+      },
+      "totalVehicles": 85,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 55
+    },
+    {
+      "timestamp": "2026-05-18T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 26,
+        "Southbound": 29,
+        "Eastbound": 16,
+        "Westbound": 20
+      },
+      "totalVehicles": 91,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 58
+    },
+    {
+      "timestamp": "2026-05-18T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 28,
+        "Eastbound": 21,
+        "Westbound": 17
+      },
+      "totalVehicles": 91,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 60
+    },
+    {
+      "timestamp": "2026-05-18T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 25,
+        "Eastbound": 12,
+        "Westbound": 12
+      },
+      "totalVehicles": 74,
+      "averageWaitSeconds": 50,
+      "congestionIndex": 51
+    },
+    {
+      "timestamp": "2026-05-18T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 38,
+        "Eastbound": 24,
+        "Westbound": 28
+      },
+      "totalVehicles": 132,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 86
+    },
+    {
+      "timestamp": "2026-05-18T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 39,
+        "Eastbound": 29,
+        "Westbound": 25
+      },
+      "totalVehicles": 132,
+      "averageWaitSeconds": 62,
+      "congestionIndex": 90
+    },
+    {
+      "timestamp": "2026-05-18T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 43,
+        "Southbound": 41,
+        "Eastbound": 25,
+        "Westbound": 28
+      },
+      "totalVehicles": 137,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 88
+    },
+    {
+      "timestamp": "2026-05-18T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 15,
+        "Southbound": 17,
+        "Eastbound": 9,
+        "Westbound": 10
+      },
+      "totalVehicles": 51,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 38
+    },
+    {
+      "timestamp": "2026-05-18T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 11,
+        "Eastbound": 8,
+        "Westbound": 11
+      },
+      "totalVehicles": 41,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 32
+    },
+    {
+      "timestamp": "2026-05-18T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 17,
+        "Southbound": 20,
+        "Eastbound": 13,
+        "Westbound": 14
+      },
+      "totalVehicles": 64,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 39
+    },
+    {
+      "timestamp": "2026-05-18T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 16,
+        "Southbound": 14,
+        "Eastbound": 7,
+        "Westbound": 10
+      },
+      "totalVehicles": 47,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 36
+    },
+    {
+      "timestamp": "2026-05-18T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 8,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 7,
+        "Eastbound": 6,
+        "Westbound": 5
+      },
+      "totalVehicles": 25,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 7,
+        "Eastbound": 8,
+        "Westbound": 9
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 6,
+        "Eastbound": 6,
+        "Westbound": 7
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-18T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 13,
+        "Eastbound": 3,
+        "Westbound": 7
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 9,
+        "Eastbound": 9,
+        "Westbound": 7
+      },
+      "totalVehicles": 34,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 6,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 35,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 13,
+        "Eastbound": 3,
+        "Westbound": 6
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 42,
+        "Eastbound": 24,
+        "Westbound": 30
+      },
+      "totalVehicles": 138,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 85
+    },
+    {
+      "timestamp": "2026-05-19T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 42,
+        "Eastbound": 27,
+        "Westbound": 31
+      },
+      "totalVehicles": 142,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 91
+    },
+    {
+      "timestamp": "2026-05-19T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 45,
+        "Eastbound": 27,
+        "Westbound": 31
+      },
+      "totalVehicles": 148,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 92
+    },
+    {
+      "timestamp": "2026-05-19T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 34,
+        "Southbound": 31,
+        "Eastbound": 23,
+        "Westbound": 17
+      },
+      "totalVehicles": 105,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 64
+    },
+    {
+      "timestamp": "2026-05-19T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 22,
+        "Eastbound": 16,
+        "Westbound": 18
+      },
+      "totalVehicles": 81,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 53
+    },
+    {
+      "timestamp": "2026-05-19T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 24,
+        "Southbound": 25,
+        "Eastbound": 14,
+        "Westbound": 17
+      },
+      "totalVehicles": 80,
+      "averageWaitSeconds": 51,
+      "congestionIndex": 56
+    },
+    {
+      "timestamp": "2026-05-19T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 26,
+        "Southbound": 29,
+        "Eastbound": 21,
+        "Westbound": 17
+      },
+      "totalVehicles": 93,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 58
+    },
+    {
+      "timestamp": "2026-05-19T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 32,
+        "Southbound": 33,
+        "Eastbound": 19,
+        "Westbound": 18
+      },
+      "totalVehicles": 102,
+      "averageWaitSeconds": 50,
+      "congestionIndex": 62
+    },
+    {
+      "timestamp": "2026-05-19T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 22,
+        "Southbound": 23,
+        "Eastbound": 12,
+        "Westbound": 12
+      },
+      "totalVehicles": 69,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 50
+    },
+    {
+      "timestamp": "2026-05-19T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 48,
+        "Eastbound": 27,
+        "Westbound": 27
+      },
+      "totalVehicles": 147,
+      "averageWaitSeconds": 63,
+      "congestionIndex": 97
+    },
+    {
+      "timestamp": "2026-05-19T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 49,
+        "Eastbound": 33,
+        "Westbound": 27
+      },
+      "totalVehicles": 154,
+      "averageWaitSeconds": 57,
+      "congestionIndex": 97
+    },
+    {
+      "timestamp": "2026-05-19T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 41,
+        "Southbound": 40,
+        "Eastbound": 32,
+        "Westbound": 28
+      },
+      "totalVehicles": 141,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 89
+    },
+    {
+      "timestamp": "2026-05-19T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 20,
+        "Southbound": 21,
+        "Eastbound": 9,
+        "Westbound": 12
+      },
+      "totalVehicles": 62,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 38
+    },
+    {
+      "timestamp": "2026-05-19T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 21,
+        "Southbound": 23,
+        "Eastbound": 17,
+        "Westbound": 10
+      },
+      "totalVehicles": 71,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 44
+    },
+    {
+      "timestamp": "2026-05-19T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 15,
+        "Eastbound": 14,
+        "Westbound": 11
+      },
+      "totalVehicles": 53,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 35
+    },
+    {
+      "timestamp": "2026-05-19T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 11,
+        "Eastbound": 10,
+        "Westbound": 12
+      },
+      "totalVehicles": 46,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 31
+    },
+    {
+      "timestamp": "2026-05-19T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 12,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 35,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 10,
+        "Eastbound": 6,
+        "Westbound": 2
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 6,
+        "Eastbound": 2,
+        "Westbound": 2
+      },
+      "totalVehicles": 20,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 7,
+        "Eastbound": 6,
+        "Westbound": 5
+      },
+      "totalVehicles": 26,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-19T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 9,
+        "Eastbound": 8,
+        "Westbound": 2
+      },
+      "totalVehicles": 27,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 11,
+        "Eastbound": 4,
+        "Westbound": 8
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 36,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 10,
+        "Eastbound": 5,
+        "Westbound": 5
+      },
+      "totalVehicles": 26,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 13,
+        "Eastbound": 9,
+        "Westbound": 5
+      },
+      "totalVehicles": 36,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 42,
+        "Eastbound": 29,
+        "Westbound": 26
+      },
+      "totalVehicles": 136,
+      "averageWaitSeconds": 54,
+      "congestionIndex": 88
+    },
+    {
+      "timestamp": "2026-05-20T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 44,
+        "Southbound": 50,
+        "Eastbound": 29,
+        "Westbound": 32
+      },
+      "totalVehicles": 155,
+      "averageWaitSeconds": 58,
+      "congestionIndex": 99
+    },
+    {
+      "timestamp": "2026-05-20T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 44,
+        "Southbound": 50,
+        "Eastbound": 28,
+        "Westbound": 29
+      },
+      "totalVehicles": 151,
+      "averageWaitSeconds": 55,
+      "congestionIndex": 97
+    },
+    {
+      "timestamp": "2026-05-20T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 27,
+        "Southbound": 28,
+        "Eastbound": 21,
+        "Westbound": 16
+      },
+      "totalVehicles": 92,
+      "averageWaitSeconds": 46,
+      "congestionIndex": 56
+    },
+    {
+      "timestamp": "2026-05-20T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 29,
+        "Southbound": 25,
+        "Eastbound": 15,
+        "Westbound": 14
+      },
+      "totalVehicles": 83,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 53
+    },
+    {
+      "timestamp": "2026-05-20T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 31,
+        "Southbound": 25,
+        "Eastbound": 16,
+        "Westbound": 18
+      },
+      "totalVehicles": 90,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 58
+    },
+    {
+      "timestamp": "2026-05-20T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 27,
+        "Southbound": 33,
+        "Eastbound": 16,
+        "Westbound": 16
+      },
+      "totalVehicles": 92,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 62
+    },
+    {
+      "timestamp": "2026-05-20T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 28,
+        "Southbound": 26,
+        "Eastbound": 20,
+        "Westbound": 23
+      },
+      "totalVehicles": 97,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 61
+    },
+    {
+      "timestamp": "2026-05-20T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 27,
+        "Southbound": 26,
+        "Eastbound": 19,
+        "Westbound": 18
+      },
+      "totalVehicles": 90,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 59
+    },
+    {
+      "timestamp": "2026-05-20T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 48,
+        "Eastbound": 29,
+        "Westbound": 32
+      },
+      "totalVehicles": 154,
+      "averageWaitSeconds": 57,
+      "congestionIndex": 95
+    },
+    {
+      "timestamp": "2026-05-20T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 42,
+        "Eastbound": 26,
+        "Westbound": 27
+      },
+      "totalVehicles": 137,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 92
+    },
+    {
+      "timestamp": "2026-05-20T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 41,
+        "Eastbound": 29,
+        "Westbound": 30
+      },
+      "totalVehicles": 142,
+      "averageWaitSeconds": 62,
+      "congestionIndex": 92
+    },
+    {
+      "timestamp": "2026-05-20T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 18,
+        "Southbound": 17,
+        "Eastbound": 11,
+        "Westbound": 11
+      },
+      "totalVehicles": 57,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 34
+    },
+    {
+      "timestamp": "2026-05-20T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 20,
+        "Southbound": 13,
+        "Eastbound": 12,
+        "Westbound": 15
+      },
+      "totalVehicles": 60,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 36
+    },
+    {
+      "timestamp": "2026-05-20T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 15,
+        "Southbound": 18,
+        "Eastbound": 9,
+        "Westbound": 12
+      },
+      "totalVehicles": 54,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 39
+    },
+    {
+      "timestamp": "2026-05-20T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 22,
+        "Southbound": 23,
+        "Eastbound": 12,
+        "Westbound": 14
+      },
+      "totalVehicles": 71,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 41
+    },
+    {
+      "timestamp": "2026-05-20T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 6,
+        "Eastbound": 9,
+        "Westbound": 2
+      },
+      "totalVehicles": 24,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 11,
+        "Eastbound": 2,
+        "Westbound": 5
+      },
+      "totalVehicles": 27,
+      "averageWaitSeconds": 35,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 9,
+        "Eastbound": 4,
+        "Westbound": 4
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 8,
+        "Eastbound": 2,
+        "Westbound": 5
+      },
+      "totalVehicles": 26,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-20T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 10,
+        "Eastbound": 3,
+        "Westbound": 6
+      },
+      "totalVehicles": 27,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 12,
+        "Eastbound": 2,
+        "Westbound": 8
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 6,
+        "Eastbound": 9,
+        "Westbound": 4
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 36,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 7,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 43,
+        "Eastbound": 28,
+        "Westbound": 33
+      },
+      "totalVehicles": 149,
+      "averageWaitSeconds": 59,
+      "congestionIndex": 98
+    },
+    {
+      "timestamp": "2026-05-21T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 40,
+        "Southbound": 41,
+        "Eastbound": 29,
+        "Westbound": 29
+      },
+      "totalVehicles": 139,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 86
+    },
+    {
+      "timestamp": "2026-05-21T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 43,
+        "Southbound": 46,
+        "Eastbound": 26,
+        "Westbound": 31
+      },
+      "totalVehicles": 146,
+      "averageWaitSeconds": 57,
+      "congestionIndex": 90
+    },
+    {
+      "timestamp": "2026-05-21T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 29,
+        "Southbound": 30,
+        "Eastbound": 19,
+        "Westbound": 21
+      },
+      "totalVehicles": 99,
+      "averageWaitSeconds": 55,
+      "congestionIndex": 68
+    },
+    {
+      "timestamp": "2026-05-21T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 30,
+        "Southbound": 26,
+        "Eastbound": 20,
+        "Westbound": 22
+      },
+      "totalVehicles": 98,
+      "averageWaitSeconds": 51,
+      "congestionIndex": 62
+    },
+    {
+      "timestamp": "2026-05-21T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 27,
+        "Southbound": 28,
+        "Eastbound": 18,
+        "Westbound": 20
+      },
+      "totalVehicles": 93,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 65
+    },
+    {
+      "timestamp": "2026-05-21T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 28,
+        "Southbound": 25,
+        "Eastbound": 14,
+        "Westbound": 16
+      },
+      "totalVehicles": 83,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 52
+    },
+    {
+      "timestamp": "2026-05-21T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 34,
+        "Southbound": 32,
+        "Eastbound": 20,
+        "Westbound": 19
+      },
+      "totalVehicles": 105,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 67
+    },
+    {
+      "timestamp": "2026-05-21T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 26,
+        "Southbound": 22,
+        "Eastbound": 17,
+        "Westbound": 15
+      },
+      "totalVehicles": 80,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 52
+    },
+    {
+      "timestamp": "2026-05-21T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 44,
+        "Eastbound": 28,
+        "Westbound": 27
+      },
+      "totalVehicles": 138,
+      "averageWaitSeconds": 58,
+      "congestionIndex": 87
+    },
+    {
+      "timestamp": "2026-05-21T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 46,
+        "Southbound": 47,
+        "Eastbound": 33,
+        "Westbound": 32
+      },
+      "totalVehicles": 158,
+      "averageWaitSeconds": 61,
+      "congestionIndex": 93
+    },
+    {
+      "timestamp": "2026-05-21T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 46,
+        "Eastbound": 31,
+        "Westbound": 27
+      },
+      "totalVehicles": 143,
+      "averageWaitSeconds": 58,
+      "congestionIndex": 90
+    },
+    {
+      "timestamp": "2026-05-21T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 14,
+        "Southbound": 19,
+        "Eastbound": 13,
+        "Westbound": 7
+      },
+      "totalVehicles": 53,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 35
+    },
+    {
+      "timestamp": "2026-05-21T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 22,
+        "Southbound": 23,
+        "Eastbound": 13,
+        "Westbound": 15
+      },
+      "totalVehicles": 73,
+      "averageWaitSeconds": 46,
+      "congestionIndex": 42
+    },
+    {
+      "timestamp": "2026-05-21T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 16,
+        "Southbound": 15,
+        "Eastbound": 7,
+        "Westbound": 8
+      },
+      "totalVehicles": 46,
+      "averageWaitSeconds": 46,
+      "congestionIndex": 32
+    },
+    {
+      "timestamp": "2026-05-21T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 19,
+        "Southbound": 14,
+        "Eastbound": 8,
+        "Westbound": 10
+      },
+      "totalVehicles": 51,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 34
+    },
+    {
+      "timestamp": "2026-05-21T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 11,
+        "Eastbound": 4,
+        "Westbound": 2
+      },
+      "totalVehicles": 23,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 13,
+        "Eastbound": 5,
+        "Westbound": 9
+      },
+      "totalVehicles": 39,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 8,
+        "Eastbound": 9,
+        "Westbound": 4
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 8,
+        "Eastbound": 9,
+        "Westbound": 9
+      },
+      "totalVehicles": 37,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-21T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 11,
+        "Eastbound": 9,
+        "Westbound": 2
+      },
+      "totalVehicles": 34,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 10,
+        "Eastbound": 6,
+        "Westbound": 8
+      },
+      "totalVehicles": 30,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 9,
+        "Eastbound": 8,
+        "Westbound": 3
+      },
+      "totalVehicles": 33,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 6,
+        "Eastbound": 8,
+        "Westbound": 7
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 43,
+        "Southbound": 41,
+        "Eastbound": 25,
+        "Westbound": 28
+      },
+      "totalVehicles": 137,
+      "averageWaitSeconds": 61,
+      "congestionIndex": 87
+    },
+    {
+      "timestamp": "2026-05-22T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 43,
+        "Southbound": 39,
+        "Eastbound": 30,
+        "Westbound": 27
+      },
+      "totalVehicles": 139,
+      "averageWaitSeconds": 54,
+      "congestionIndex": 89
+    },
+    {
+      "timestamp": "2026-05-22T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 47,
+        "Southbound": 40,
+        "Eastbound": 27,
+        "Westbound": 30
+      },
+      "totalVehicles": 144,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 91
+    },
+    {
+      "timestamp": "2026-05-22T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 27,
+        "Southbound": 27,
+        "Eastbound": 21,
+        "Westbound": 20
+      },
+      "totalVehicles": 95,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 55
+    },
+    {
+      "timestamp": "2026-05-22T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 29,
+        "Southbound": 31,
+        "Eastbound": 22,
+        "Westbound": 23
+      },
+      "totalVehicles": 105,
+      "averageWaitSeconds": 56,
+      "congestionIndex": 64
+    },
+    {
+      "timestamp": "2026-05-22T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 24,
+        "Southbound": 24,
+        "Eastbound": 19,
+        "Westbound": 13
+      },
+      "totalVehicles": 80,
+      "averageWaitSeconds": 50,
+      "congestionIndex": 52
+    },
+    {
+      "timestamp": "2026-05-22T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 27,
+        "Eastbound": 15,
+        "Westbound": 15
+      },
+      "totalVehicles": 82,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 51
+    },
+    {
+      "timestamp": "2026-05-22T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 31,
+        "Southbound": 36,
+        "Eastbound": 21,
+        "Westbound": 21
+      },
+      "totalVehicles": 109,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 68
+    },
+    {
+      "timestamp": "2026-05-22T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 33,
+        "Southbound": 28,
+        "Eastbound": 21,
+        "Westbound": 19
+      },
+      "totalVehicles": 101,
+      "averageWaitSeconds": 55,
+      "congestionIndex": 66
+    },
+    {
+      "timestamp": "2026-05-22T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 38,
+        "Eastbound": 31,
+        "Westbound": 31
+      },
+      "totalVehicles": 142,
+      "averageWaitSeconds": 56,
+      "congestionIndex": 86
+    },
+    {
+      "timestamp": "2026-05-22T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 41,
+        "Southbound": 45,
+        "Eastbound": 30,
+        "Westbound": 26
+      },
+      "totalVehicles": 142,
+      "averageWaitSeconds": 61,
+      "congestionIndex": 91
+    },
+    {
+      "timestamp": "2026-05-22T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 40,
+        "Eastbound": 31,
+        "Westbound": 26
+      },
+      "totalVehicles": 136,
+      "averageWaitSeconds": 60,
+      "congestionIndex": 87
+    },
+    {
+      "timestamp": "2026-05-22T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 17,
+        "Southbound": 14,
+        "Eastbound": 13,
+        "Westbound": 8
+      },
+      "totalVehicles": 52,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 31
+    },
+    {
+      "timestamp": "2026-05-22T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 22,
+        "Southbound": 21,
+        "Eastbound": 10,
+        "Westbound": 15
+      },
+      "totalVehicles": 68,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 39
+    },
+    {
+      "timestamp": "2026-05-22T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 14,
+        "Southbound": 19,
+        "Eastbound": 15,
+        "Westbound": 10
+      },
+      "totalVehicles": 58,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 38
+    },
+    {
+      "timestamp": "2026-05-22T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 14,
+        "Eastbound": 9,
+        "Westbound": 12
+      },
+      "totalVehicles": 47,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 33
+    },
+    {
+      "timestamp": "2026-05-22T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 11,
+        "Eastbound": 2,
+        "Westbound": 7
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 12,
+        "Southbound": 8,
+        "Eastbound": 6,
+        "Westbound": 7
+      },
+      "totalVehicles": 33,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 7,
+        "Eastbound": 7,
+        "Westbound": 7
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 7,
+        "Eastbound": 5,
+        "Westbound": 4
+      },
+      "totalVehicles": 26,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-22T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 7,
+        "Eastbound": 8,
+        "Westbound": 7
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 35,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 11,
+        "Southbound": 11,
+        "Eastbound": 6,
+        "Westbound": 6
+      },
+      "totalVehicles": 34,
+      "averageWaitSeconds": 44,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 8,
+        "Eastbound": 5,
+        "Westbound": 6
+      },
+      "totalVehicles": 26,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 12,
+        "Eastbound": 8,
+        "Westbound": 8
+      },
+      "totalVehicles": 35,
+      "averageWaitSeconds": 39,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 40,
+        "Southbound": 40,
+        "Eastbound": 27,
+        "Westbound": 30
+      },
+      "totalVehicles": 137,
+      "averageWaitSeconds": 59,
+      "congestionIndex": 88
+    },
+    {
+      "timestamp": "2026-05-23T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 46,
+        "Eastbound": 25,
+        "Westbound": 28
+      },
+      "totalVehicles": 138,
+      "averageWaitSeconds": 61,
+      "congestionIndex": 89
+    },
+    {
+      "timestamp": "2026-05-23T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 39,
+        "Southbound": 39,
+        "Eastbound": 24,
+        "Westbound": 25
+      },
+      "totalVehicles": 127,
+      "averageWaitSeconds": 56,
+      "congestionIndex": 88
+    },
+    {
+      "timestamp": "2026-05-23T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 27,
+        "Eastbound": 16,
+        "Westbound": 14
+      },
+      "totalVehicles": 82,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 51
+    },
+    {
+      "timestamp": "2026-05-23T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 25,
+        "Southbound": 26,
+        "Eastbound": 16,
+        "Westbound": 15
+      },
+      "totalVehicles": 82,
+      "averageWaitSeconds": 49,
+      "congestionIndex": 52
+    },
+    {
+      "timestamp": "2026-05-23T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 31,
+        "Southbound": 33,
+        "Eastbound": 20,
+        "Westbound": 18
+      },
+      "totalVehicles": 102,
+      "averageWaitSeconds": 56,
+      "congestionIndex": 69
+    },
+    {
+      "timestamp": "2026-05-23T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 22,
+        "Southbound": 26,
+        "Eastbound": 15,
+        "Westbound": 19
+      },
+      "totalVehicles": 82,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 55
+    },
+    {
+      "timestamp": "2026-05-23T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 21,
+        "Southbound": 24,
+        "Eastbound": 14,
+        "Westbound": 18
+      },
+      "totalVehicles": 77,
+      "averageWaitSeconds": 52,
+      "congestionIndex": 51
+    },
+    {
+      "timestamp": "2026-05-23T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 26,
+        "Southbound": 28,
+        "Eastbound": 16,
+        "Westbound": 20
+      },
+      "totalVehicles": 90,
+      "averageWaitSeconds": 54,
+      "congestionIndex": 62
+    },
+    {
+      "timestamp": "2026-05-23T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 44,
+        "Southbound": 41,
+        "Eastbound": 29,
+        "Westbound": 24
+      },
+      "totalVehicles": 138,
+      "averageWaitSeconds": 61,
+      "congestionIndex": 86
+    },
+    {
+      "timestamp": "2026-05-23T13:19:21.481Z",
+      "hour": "18:00",
+      "counts": {
+        "Northbound": 45,
+        "Southbound": 50,
+        "Eastbound": 33,
+        "Westbound": 28
+      },
+      "totalVehicles": 156,
+      "averageWaitSeconds": 58,
+      "congestionIndex": 99
+    },
+    {
+      "timestamp": "2026-05-23T14:19:21.481Z",
+      "hour": "19:00",
+      "counts": {
+        "Northbound": 42,
+        "Southbound": 41,
+        "Eastbound": 28,
+        "Westbound": 27
+      },
+      "totalVehicles": 138,
+      "averageWaitSeconds": 63,
+      "congestionIndex": 94
+    },
+    {
+      "timestamp": "2026-05-23T15:19:21.481Z",
+      "hour": "20:00",
+      "counts": {
+        "Northbound": 18,
+        "Southbound": 15,
+        "Eastbound": 16,
+        "Westbound": 10
+      },
+      "totalVehicles": 59,
+      "averageWaitSeconds": 45,
+      "congestionIndex": 40
+    },
+    {
+      "timestamp": "2026-05-23T16:19:21.481Z",
+      "hour": "21:00",
+      "counts": {
+        "Northbound": 18,
+        "Southbound": 19,
+        "Eastbound": 11,
+        "Westbound": 7
+      },
+      "totalVehicles": 55,
+      "averageWaitSeconds": 41,
+      "congestionIndex": 34
+    },
+    {
+      "timestamp": "2026-05-23T17:19:21.481Z",
+      "hour": "22:00",
+      "counts": {
+        "Northbound": 17,
+        "Southbound": 17,
+        "Eastbound": 8,
+        "Westbound": 9
+      },
+      "totalVehicles": 51,
+      "averageWaitSeconds": 40,
+      "congestionIndex": 37
+    },
+    {
+      "timestamp": "2026-05-23T18:19:21.481Z",
+      "hour": "23:00",
+      "counts": {
+        "Northbound": 23,
+        "Southbound": 17,
+        "Eastbound": 11,
+        "Westbound": 11
+      },
+      "totalVehicles": 62,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 45
+    },
+    {
+      "timestamp": "2026-05-23T19:19:21.481Z",
+      "hour": "0:00",
+      "counts": {
+        "Northbound": 6,
+        "Southbound": 10,
+        "Eastbound": 6,
+        "Westbound": 9
+      },
+      "totalVehicles": 31,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T20:19:21.481Z",
+      "hour": "1:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 10,
+        "Eastbound": 6,
+        "Westbound": 9
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 38,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T21:19:21.481Z",
+      "hour": "2:00",
+      "counts": {
+        "Northbound": 9,
+        "Southbound": 12,
+        "Eastbound": 8,
+        "Westbound": 2
+      },
+      "totalVehicles": 31,
+      "averageWaitSeconds": 42,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T22:19:21.481Z",
+      "hour": "3:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 8,
+        "Eastbound": 3,
+        "Westbound": 8
+      },
+      "totalVehicles": 32,
+      "averageWaitSeconds": 36,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-23T23:19:21.481Z",
+      "hour": "4:00",
+      "counts": {
+        "Northbound": 10,
+        "Southbound": 6,
+        "Eastbound": 2,
+        "Westbound": 9
+      },
+      "totalVehicles": 27,
+      "averageWaitSeconds": 36,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-24T00:19:21.481Z",
+      "hour": "5:00",
+      "counts": {
+        "Northbound": 8,
+        "Southbound": 7,
+        "Eastbound": 9,
+        "Westbound": 5
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-24T01:19:21.481Z",
+      "hour": "6:00",
+      "counts": {
+        "Northbound": 7,
+        "Southbound": 8,
+        "Eastbound": 7,
+        "Westbound": 7
+      },
+      "totalVehicles": 29,
+      "averageWaitSeconds": 43,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-24T02:19:21.481Z",
+      "hour": "7:00",
+      "counts": {
+        "Northbound": 13,
+        "Southbound": 9,
+        "Eastbound": 8,
+        "Westbound": 7
+      },
+      "totalVehicles": 37,
+      "averageWaitSeconds": 37,
+      "congestionIndex": 20
+    },
+    {
+      "timestamp": "2026-05-24T03:19:21.481Z",
+      "hour": "8:00",
+      "counts": {
+        "Northbound": 44,
+        "Southbound": 43,
+        "Eastbound": 24,
+        "Westbound": 29
+      },
+      "totalVehicles": 140,
+      "averageWaitSeconds": 59,
+      "congestionIndex": 89
+    },
+    {
+      "timestamp": "2026-05-24T04:19:21.481Z",
+      "hour": "9:00",
+      "counts": {
+        "Northbound": 46,
+        "Southbound": 46,
+        "Eastbound": 31,
+        "Westbound": 34
+      },
+      "totalVehicles": 157,
+      "averageWaitSeconds": 62,
+      "congestionIndex": 96
+    },
+    {
+      "timestamp": "2026-05-24T05:19:21.481Z",
+      "hour": "10:00",
+      "counts": {
+        "Northbound": 44,
+        "Southbound": 47,
+        "Eastbound": 35,
+        "Westbound": 31
+      },
+      "totalVehicles": 157,
+      "averageWaitSeconds": 63,
+      "congestionIndex": 99
+    },
+    {
+      "timestamp": "2026-05-24T06:19:21.481Z",
+      "hour": "11:00",
+      "counts": {
+        "Northbound": 32,
+        "Southbound": 31,
+        "Eastbound": 20,
+        "Westbound": 24
+      },
+      "totalVehicles": 107,
+      "averageWaitSeconds": 48,
+      "congestionIndex": 66
+    },
+    {
+      "timestamp": "2026-05-24T07:19:21.481Z",
+      "hour": "12:00",
+      "counts": {
+        "Northbound": 28,
+        "Southbound": 30,
+        "Eastbound": 20,
+        "Westbound": 20
+      },
+      "totalVehicles": 98,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 57
+    },
+    {
+      "timestamp": "2026-05-24T08:19:21.481Z",
+      "hour": "13:00",
+      "counts": {
+        "Northbound": 29,
+        "Southbound": 29,
+        "Eastbound": 21,
+        "Westbound": 22
+      },
+      "totalVehicles": 101,
+      "averageWaitSeconds": 51,
+      "congestionIndex": 63
+    },
+    {
+      "timestamp": "2026-05-24T09:19:21.481Z",
+      "hour": "14:00",
+      "counts": {
+        "Northbound": 33,
+        "Southbound": 27,
+        "Eastbound": 23,
+        "Westbound": 23
+      },
+      "totalVehicles": 106,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 65
+    },
+    {
+      "timestamp": "2026-05-24T10:19:21.481Z",
+      "hour": "15:00",
+      "counts": {
+        "Northbound": 30,
+        "Southbound": 27,
+        "Eastbound": 24,
+        "Westbound": 22
+      },
+      "totalVehicles": 103,
+      "averageWaitSeconds": 47,
+      "congestionIndex": 65
+    },
+    {
+      "timestamp": "2026-05-24T11:19:21.481Z",
+      "hour": "16:00",
+      "counts": {
+        "Northbound": 33,
+        "Southbound": 31,
+        "Eastbound": 22,
+        "Westbound": 18
+      },
+      "totalVehicles": 104,
+      "averageWaitSeconds": 53,
+      "congestionIndex": 69
+    },
+    {
+      "timestamp": "2026-05-24T12:19:21.481Z",
+      "hour": "17:00",
+      "counts": {
+        "Northbound": 48,
+        "Southbound": 49,
+        "Eastbound": 35,
+        "Westbound": 32
+      },
+      "totalVehicles": 164,
+      "averageWaitSeconds": 57,
+      "congestionIndex": 100
+    }
+  ]
+}

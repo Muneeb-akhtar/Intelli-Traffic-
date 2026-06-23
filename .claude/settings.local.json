@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process -FilePath \"cmd.exe\" -ArgumentList \"/c npm run dev\" -WorkingDirectory \"c:\\\\Final Year Project\\\\frontend\" -WindowStyle Normal -PassThru)",
+      "PowerShell(Start-Process \"http://localhost:8080/dashboard\")"
+    ]
+  }
+}

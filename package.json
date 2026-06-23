@@ -1,0 +1,16 @@
+{
+  "name": "intelli-traffic-root",
+  "version": "1.0.0",
+  "description": "Adaptive Traffic Control System - Final Year Project",
+  "scripts": {
+    "setup": "npm run setup:backend && npm run setup:frontend",
+    "setup:backend": "cd backend && npm install",
+    "setup:frontend": "cd frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

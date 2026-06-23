@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build output
+frontend/dist/
+*.egg-info/
+
+# Environment secrets
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# ML model weights (large binary files)
+*.pt
+*.onnx
+
+# Generated / large video files
+traffic_4way_simulation.mp4
+traffic_processed.mp4
+traffic_state.jsonl
