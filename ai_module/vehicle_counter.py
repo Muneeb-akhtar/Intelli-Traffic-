@@ -67,12 +67,13 @@ CLS_COLOR = {
 
 COUNT_LINE_Y = 0.60
 
-# Video files for each camera slot (auto-discovered from project root)
+# Absolute paths resolved relative to this file so they work in any working directory
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CAMERA_VIDEOS = [
-    'frontend/public/Traffic video lahore.mp4',
-    'frontend/public/Traffic video lahore 2.mp4',
-    'frontend/public/Single line lahore traffic 3.mp4',
-    'frontend/public/Single line lahore Traffic 4.mp4',
+    str(_PROJECT_ROOT / 'frontend/public/Traffic video lahore.mp4'),
+    str(_PROJECT_ROOT / 'frontend/public/Traffic video lahore 2.mp4'),
+    str(_PROJECT_ROOT / 'frontend/public/Single line lahore traffic 3.mp4'),
+    str(_PROJECT_ROOT / 'frontend/public/Single line lahore Traffic 4.mp4'),
 ]
 
 CAMERA_NAMES = [
