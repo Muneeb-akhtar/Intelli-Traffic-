@@ -15,12 +15,12 @@ interface Props {
 const LANES = [
   { name: 'Northbound', short: 'North', icon: ArrowUp },
   { name: 'Southbound', short: 'South', icon: ArrowDown },
-  { name: 'Eastbound', short: 'East', icon: ArrowRight },
-  { name: 'Westbound', short: 'West', icon: ArrowLeft },
+  { name: 'Eastbound',  short: 'East',  icon: ArrowRight },
+  { name: 'Westbound',  short: 'West',  icon: ArrowLeft },
 ] as const;
 
-const laneButtonBase =
-  'text-left px-4 py-3.5 rounded-lg border text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-2 disabled:opacity-50 disabled:cursor-not-allowed';
+const btnBase =
+  'text-left px-4 py-3.5 rounded-lg border text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed';
 
 export const ControlPanel: React.FC<Props> = ({
   state,
@@ -31,15 +31,12 @@ export const ControlPanel: React.FC<Props> = ({
   onEmergencyStop,
   onUpdateSettings,
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading,       setLoading]       = useState(false);
   const [localSettings, setLocalSettings] = useState(settings);
   const [settingsDirty, setSettingsDirty] = useState(false);
 
-  // Sync incoming settings when they change from server
   React.useEffect(() => {
-    if (!settingsDirty) {
-      setLocalSettings(settings);
-    }
+    if (!settingsDirty) setLocalSettings(settings);
   }, [settings, settingsDirty]);
 
   const handleOverride = async (index: number) => {
@@ -50,9 +47,7 @@ export const ControlPanel: React.FC<Props> = ({
       } else {
         await onOverrideStart(index);
       }
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   };
 
   const handleEmergency = async (index: number) => {
@@ -63,9 +58,7 @@ export const ControlPanel: React.FC<Props> = ({
       } else {
         await onEmergencyStart(index);
       }
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   };
 
   const handleSettingChange = (key: keyof EngineSettings, value: string) => {
@@ -77,44 +70,44 @@ export const ControlPanel: React.FC<Props> = ({
 
   const handleApplySettings = async () => {
     setLoading(true);
-    try {
-      await onUpdateSettings(localSettings);
-      setSettingsDirty(false);
-    } finally {
-      setLoading(false);
-    }
+    try { await onUpdateSettings(localSettings); setSettingsDirty(false); }
+    finally { setLoading(false); }
   };
 
   return (
-    <div className="card p-4 sm:p-5 flex flex-col h-full">
+    <div className="card-light p-4 sm:p-5 flex flex-col h-full">
       <div className="flex items-start justify-between gap-3 mb-4 sm:mb-5">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-accent">
             01 · Control
           </p>
-          <h2 className="font-heading text-sm font-semibold text-text-primary mt-1">Signal control</h2>
-          <p className="text-xs text-text-tertiary mt-0.5">Manual override and system parameters</p>
+          <h2 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)] mt-1">
+            Signal control
+          </h2>
+          <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">
+            Manual override and system parameters
+          </p>
         </div>
         {state.isOverrideActive && (
-          <span className="badge badge-yellow shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 border border-amber-200 shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
             Override active
           </span>
         )}
         {state.emergencyActive && (
-          <span className="badge badge-red shrink-0">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 text-red-700 border border-red-200 shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
             Emergency
           </span>
         )}
       </div>
 
-      {/* Admin Override Info */}
-      <div className="card-inner p-3 mb-4 flex gap-3 border-l-2 border-l-accent/40">
+      {/* Admin override notice */}
+      <div className="bg-[var(--color-corporate-muted)] border border-[var(--color-corporate-border)] border-l-2 border-l-accent rounded-lg p-3 mb-4 flex gap-3">
         <AlertTriangle className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden />
         <div>
-          <p className="text-xs font-medium text-text-primary">Admin override</p>
-          <p className="text-xs text-text-tertiary leading-relaxed mt-0.5">
+          <p className="text-xs font-semibold text-[var(--color-corporate-text)]">Admin override</p>
+          <p className="text-xs text-[var(--color-corporate-text-muted)] leading-relaxed mt-0.5">
             Forcing a lane green holds it for 30 seconds max. Releasing triggers a 3s yellow safety buffer before resuming automatic control.
           </p>
         </div>
@@ -122,7 +115,7 @@ export const ControlPanel: React.FC<Props> = ({
 
       {/* Lane Override Buttons */}
       <div className="flex-1">
-        <p className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-3">
+        <p className="text-xs font-semibold text-[var(--color-corporate-text-muted)] uppercase tracking-wider mb-3">
           Select lane to force green
         </p>
         <div className="grid grid-cols-2 gap-2">
@@ -135,20 +128,20 @@ export const ControlPanel: React.FC<Props> = ({
                 type="button"
                 disabled={loading || state.emergencyActive}
                 onClick={() => handleOverride(index)}
-                className={`${laneButtonBase} ${
+                className={`${btnBase} ${
                   isActive
-                    ? 'bg-yellow-500/10 border-yellow-500/30 text-yellow-300'
-                    : 'bg-surface-3 border-border text-text-secondary hover:bg-surface-4 hover:text-text-primary hover:border-accent/40'
-                } ${!isActive ? 'hover:shadow-[0_0_0_1px_rgba(243,110,32,0.2)]' : ''}`}
+                    ? 'bg-amber-50 border-amber-300 text-amber-800 shadow-sm'
+                    : 'bg-[var(--color-corporate-muted)] border-[var(--color-corporate-border)] text-[var(--color-corporate-text-muted)] hover:bg-white hover:text-[var(--color-corporate-text)] hover:border-accent/40 hover:shadow-sm'
+                }`}
               >
                 <span className="flex items-center justify-between gap-2">
                   <span className="flex items-center gap-2">
                     <Icon className="w-4 h-4 shrink-0 opacity-70" aria-hidden />
                     {lane.short}
                   </span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />}
+                  {isActive && <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />}
                 </span>
-                <span className="text-xs text-text-tertiary mt-1 block">
+                <span className="text-xs text-[var(--color-corporate-text-muted)] mt-1 block">
                   {isActive ? 'Click to release' : 'Force green'}
                 </span>
               </button>
@@ -157,6 +150,7 @@ export const ControlPanel: React.FC<Props> = ({
         </div>
       </div>
 
+      {/* Release override */}
       <button
         type="button"
         disabled={loading || !state.isOverrideActive}
@@ -168,7 +162,7 @@ export const ControlPanel: React.FC<Props> = ({
         className={`mt-4 w-full py-2.5 rounded-full text-sm font-semibold border transition-all ${
           state.isOverrideActive
             ? 'bg-accent text-white border-accent hover:bg-[var(--color-accent-hover)] shadow-md'
-            : 'bg-surface-3 border-border text-text-tertiary opacity-60 cursor-not-allowed'
+            : 'bg-[var(--color-corporate-muted)] border-[var(--color-corporate-border)] text-[var(--color-corporate-text-muted)] opacity-60 cursor-not-allowed'
         }`}
       >
         <span className="inline-flex items-center justify-center gap-2 w-full">
@@ -178,10 +172,10 @@ export const ControlPanel: React.FC<Props> = ({
       </button>
 
       {/* Emergency Vehicle Priority */}
-      <div className="mt-5 pt-4 border-t border-border">
+      <div className="mt-5 pt-4 border-t border-[var(--color-corporate-border)]">
         <div className="flex items-center gap-2 mb-3">
-          <Siren className="w-4 h-4 text-red-400" />
-          <p className="text-xs font-semibold text-text-tertiary uppercase tracking-wider">
+          <Siren className="w-4 h-4 text-red-500" />
+          <p className="text-xs font-semibold text-[var(--color-corporate-text-muted)] uppercase tracking-wider">
             Emergency vehicle priority
           </p>
         </div>
@@ -195,10 +189,10 @@ export const ControlPanel: React.FC<Props> = ({
                 type="button"
                 disabled={loading || state.isOverrideActive}
                 onClick={() => handleEmergency(index)}
-                className={`${laneButtonBase} ${
+                className={`${btnBase} ${
                   isEmergency
-                    ? 'bg-red-500/15 border-red-500/40 text-red-300'
-                    : 'bg-surface-3 border-border text-text-secondary hover:bg-red-500/5 hover:text-red-300 hover:border-red-500/30'
+                    ? 'bg-red-50 border-red-300 text-red-700'
+                    : 'bg-[var(--color-corporate-muted)] border-[var(--color-corporate-border)] text-[var(--color-corporate-text-muted)] hover:bg-red-50 hover:text-red-600 hover:border-red-200'
                 }`}
               >
                 <span className="flex items-center justify-between gap-2">
@@ -208,8 +202,8 @@ export const ControlPanel: React.FC<Props> = ({
                   </span>
                   {isEmergency && <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />}
                 </span>
-                <span className="text-xs text-text-tertiary mt-1 block">
-                  {isEmergency ? 'Click to clear' : '🚨 Emergency'}
+                <span className="text-xs text-[var(--color-corporate-text-muted)] mt-1 block">
+                  {isEmergency ? 'Click to clear' : 'Emergency'}
                 </span>
               </button>
             );
@@ -219,11 +213,8 @@ export const ControlPanel: React.FC<Props> = ({
           <button
             type="button"
             disabled={loading}
-            onClick={() => {
-              setLoading(true);
-              onEmergencyStop().finally(() => setLoading(false));
-            }}
-            className="mt-3 w-full py-2.5 rounded-full text-sm font-semibold border bg-red-500/15 text-red-300 border-red-500/30 hover:bg-red-500/25 transition-all"
+            onClick={() => { setLoading(true); onEmergencyStop().finally(() => setLoading(false)); }}
+            className="mt-3 w-full py-2.5 rounded-full text-sm font-semibold border bg-red-50 text-red-700 border-red-200 hover:bg-red-100 transition-all"
           >
             <span className="inline-flex items-center justify-center gap-2 w-full">
               <Siren className="w-4 h-4" aria-hidden />
@@ -233,42 +224,27 @@ export const ControlPanel: React.FC<Props> = ({
         )}
       </div>
 
-      {/* Engine Parameters — Editable */}
-      <div className="mt-5 pt-4 border-t border-border">
+      {/* Engine Parameters */}
+      <div className="mt-5 pt-4 border-t border-[var(--color-corporate-border)]">
         <div className="flex items-center gap-2 mb-3">
-          <Settings className="w-4 h-4 text-text-tertiary" />
-          <p className="text-xs font-semibold text-text-tertiary uppercase tracking-wider">
+          <Settings className="w-4 h-4 text-[var(--color-corporate-text-muted)]" />
+          <p className="text-xs font-semibold text-[var(--color-corporate-text-muted)] uppercase tracking-wider">
             Engine parameters
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
-          <ParamRow label="Cycle" value={String(state.cycleCount)} />
+        <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-2.5 text-xs">
+          <ParamRow label="Cycle"         value={String(state.cycleCount)} />
           <ParamRow label="Safety buffer" value="3.0s" />
-          <ParamInput
-            label="Min green"
-            value={localSettings.minGreen}
-            unit="s"
-            onChange={(v) => handleSettingChange('minGreen', v)}
-          />
-          <ParamInput
-            label="Max green"
-            value={localSettings.maxGreen}
-            unit="s"
-            onChange={(v) => handleSettingChange('maxGreen', v)}
-          />
-          <ParamInput
-            label="Density cap"
-            value={localSettings.densityCap}
-            unit=""
-            onChange={(v) => handleSettingChange('densityCap', v)}
-          />
+          <ParamInput label="Min green"   value={localSettings.minGreen}   unit="s" onChange={v => handleSettingChange('minGreen', v)} />
+          <ParamInput label="Max green"   value={localSettings.maxGreen}   unit="s" onChange={v => handleSettingChange('maxGreen', v)} />
+          <ParamInput label="Density cap" value={localSettings.densityCap} unit=""  onChange={v => handleSettingChange('densityCap', v)} />
         </div>
         {settingsDirty && (
           <button
             type="button"
             disabled={loading}
             onClick={handleApplySettings}
-            className="mt-3 w-full py-2 rounded-lg text-xs font-semibold bg-accent/15 text-accent border border-accent/30 hover:bg-accent/25 transition-all"
+            className="mt-3 w-full py-2 rounded-lg text-xs font-semibold bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 transition-all"
           >
             Apply settings
           </button>
@@ -281,18 +257,13 @@ export const ControlPanel: React.FC<Props> = ({
 function ParamRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-2">
-      <span className="text-text-tertiary">{label}</span>
-      <span className="text-text-secondary font-medium tabular-nums">{value}</span>
+      <span className="text-[var(--color-corporate-text-muted)]">{label}</span>
+      <span className="text-[var(--color-corporate-text)] font-medium tabular-nums">{value}</span>
     </div>
   );
 }
 
-function ParamInput({
-  label,
-  value,
-  unit,
-  onChange,
-}: {
+function ParamInput({ label, value, unit, onChange }: {
   label: string;
   value: number;
   unit: string;
@@ -300,15 +271,15 @@ function ParamInput({
 }) {
   return (
     <div className="flex justify-between items-center gap-2">
-      <span className="text-text-tertiary">{label}</span>
+      <span className="text-[var(--color-corporate-text-muted)]">{label}</span>
       <span className="flex items-center gap-1">
         <input
           type="number"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-14 bg-surface-3 border border-border rounded px-1.5 py-0.5 text-xs text-text-secondary font-medium tabular-nums text-right outline-none focus:border-accent/50 transition-colors"
+          onChange={e => onChange(e.target.value)}
+          className="w-14 bg-white border border-[var(--color-corporate-border)] rounded px-1.5 py-0.5 text-xs text-[var(--color-corporate-text)] font-medium tabular-nums text-right outline-none focus:border-accent transition-colors"
         />
-        {unit && <span className="text-text-tertiary">{unit}</span>}
+        {unit && <span className="text-[var(--color-corporate-text-muted)]">{unit}</span>}
       </span>
     </div>
   );

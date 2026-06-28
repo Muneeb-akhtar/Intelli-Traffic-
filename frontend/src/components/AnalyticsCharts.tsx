@@ -9,8 +9,8 @@ interface Props {
   data: AnalyticsRecord[];
 }
 
-const GRID = 'var(--color-border)';
-const TICK = 'var(--color-text-tertiary)';
+const GRID = 'var(--color-corporate-border)';
+const TICK = 'var(--color-corporate-text-muted)';
 
 const CustomTooltip = ({ active, payload, label }: {
   active?: boolean;
@@ -19,10 +19,10 @@ const CustomTooltip = ({ active, payload, label }: {
 }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-surface-0 border border-border rounded-lg px-3 py-2 shadow-xl">
-      <p className="text-xs font-medium text-text-tertiary mb-1">{label}</p>
+    <div className="bg-white border border-[var(--color-corporate-border)] rounded-lg px-3 py-2 shadow-lg">
+      <p className="text-xs font-medium text-[var(--color-corporate-text-muted)] mb-1">{label}</p>
       {payload.map((p) => (
-        <p key={p.name} className="text-xs font-medium" style={{ color: p.color || p.fill }}>
+        <p key={p.name} className="text-xs font-semibold" style={{ color: p.color || p.fill }}>
           {p.name}: {p.value}
         </p>
       ))}
@@ -43,7 +43,7 @@ export const AnalyticsCharts: React.FC<Props> = ({ data }) => {
           </div>
           <span className="badge badge-orange shrink-0">Live</span>
         </div>
-        <div className="h-[220px] w-full min-w-0">
+        <div className="h-[160px] sm:h-[200px] lg:h-[220px] w-full min-w-0">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 4, right: 4, left: -24, bottom: 0 }}>
               <defs>
@@ -89,7 +89,7 @@ export const AnalyticsCharts: React.FC<Props> = ({ data }) => {
           </div>
           <span className="badge badge-neutral shrink-0">vs 60s static</span>
         </div>
-        <div className="h-[220px] w-full min-w-0">
+        <div className="h-[160px] sm:h-[200px] lg:h-[220px] w-full min-w-0">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 4, right: 4, left: -24, bottom: 0 }}>
               <CartesianGrid stroke={GRID} strokeDasharray="3 3" vertical={false} />

@@ -108,7 +108,7 @@ body {
       rgba(255, 255, 255, 0.65) 100%
     ),
     /* traffic photo */
-    url('/Lahore Traffic mall road.png') center / cover no-repeat;
+    url('/Lahore Mall road image.png') center / cover no-repeat;
   border-bottom: 1px solid var(--color-corporate-border);
   position: relative;
   overflow: hidden;
@@ -222,27 +222,27 @@ body {
 
 /* ── Hero: staggered CSS load ───────────────────────────────────────────── */
 .tmi-hero h2 {
-  animation: slideInDown 1.4s cubic-bezier(0.22, 1, 0.36, 1) both 0.1s;
+  animation: slideInRight 1.4s cubic-bezier(0.22, 1, 0.36, 1) both 0.1s;
 }
 .tmi-hero > div > div p,
 .tmi-hero .section-label {
-  animation: slideInDown 1.3s cubic-bezier(0.22, 1, 0.36, 1) both 0.35s;
+  animation: slideInRight 1.3s cubic-bezier(0.22, 1, 0.36, 1) both 0.35s;
 }
 .tmi-hero .tmi-road-pattern {
   animation: fade-in 1.4s ease both 0.55s;
 }
 .tmi-hero .btn-cta,
 .tmi-hero .btn-cta-outline {
-  animation: slideInDown 1.2s cubic-bezier(0.22, 1, 0.36, 1) both 0.65s;
+  animation: slideInRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) both 0.65s;
 }
 
-/* ── Scroll / tab-switch reveal — powered by Animate.css slideInDown ────── */
+/* ── Scroll / tab-switch reveal — powered by Animate.css slideInRight ────── */
 .reveal {
   visibility: hidden;
 }
 .reveal.in-view {
   visibility: visible;
-  animation-name: slideInDown;
+  animation-name: slideInRight;
   animation-duration: 1.2s;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   animation-fill-mode: both;
@@ -264,13 +264,16 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 1.5rem;
+  padding: 0.75rem;
+}
+@media (min-width: 480px) {
+  .login-page { padding: 1.5rem; }
 }
 
 .login-bg {
   position: fixed;
   inset: 0;
-  background: url('/Lahore Traffic mall road.png') center / cover no-repeat;
+  background: url('/Lahore Mall road image.png') center / cover no-repeat;
   z-index: 0;
 }
 
@@ -288,10 +291,16 @@ body {
   max-width: 420px;
   background: var(--color-corporate-bg);
   border: 1px solid var(--color-corporate-border);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 16px;
+  padding: 1.25rem;
   box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.06) inset;
-  animation: slideInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (min-width: 480px) {
+  .login-card {
+    padding: 2rem;
+    border-radius: 20px;
+  }
 }
 
 /* Tabs */
@@ -523,16 +532,24 @@ a:focus-visible {
 .status-badge {
   display: inline-flex;
   align-items: center;
-  width: 76px;      /* fixed, never changes */
+  min-width: 60px;
   justify-content: center;
-  gap: 7px;
-  padding: 8px 16px;  /* matches nav-link py-2 px-4 */
+  gap: 6px;
+  padding: 6px 10px;
   border-radius: 9999px;
   border: 1px solid transparent;
-  font-size: 14px;    /* text-sm, matches nav links */
+  font-size: 12px;
   font-weight: 500;
   flex-shrink: 0;
-  contain: strict;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .status-badge {
+    min-width: 76px;
+    padding: 8px 16px;
+    font-size: 14px;
+    gap: 7px;
+  }
 }
 
 /* Color-only modifiers — no size change, no reflow */
@@ -732,7 +749,7 @@ html[data-theme="dark"] .tmi-hero {
       rgba(15, 18, 25, 0.78) 45%,
       rgba(20, 22, 30, 0.72) 100%
     ),
-    url('/Lahore Traffic mall road.png') center / cover no-repeat;
+    url('/Lahore Mall road image.png') center / cover no-repeat;
 }
 
 /* card-light → use dark surface */

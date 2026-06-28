@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useMemo, useCallback, type ReactNode } from 'react';
 import {
   Radio, Activity, Timer, TrendingUp, Shield, BarChart3, MapPin,
-  Phone, FileText, ChevronRight, Download, Sun, Moon, LogOut, ChevronDown
+  Phone, FileText, ChevronRight, Download, Sun, Moon, LogOut, ChevronDown, RefreshCw
 } from 'lucide-react';
-import type { TrafficUpdatePayload, AnalyticsRecord, SafetyLogEntry, EngineSettings } from './types';
+import type { TrafficUpdatePayload, AnalyticsRecord, SafetyLogEntry, EngineSettings, LaneData } from './types';
 import { IntersectionVisualizer } from './components/IntersectionVisualizer';
 import { ControlPanel } from './components/ControlPanel';
 import { AnalyticsCharts } from './components/AnalyticsCharts';
@@ -70,8 +70,76 @@ function AnimatedTrafficLight({ small = false }: { small?: boolean }) {
   );
 }
 
-const API_BASE = 'http://localhost:5000/api';
-const WS_URL = 'ws://localhost:5000';
+const PYTHON_API = (import.meta.env.VITE_API_BASE_URL as string | undefined) || 'http://localhost:8081';
+
+// ── Demo safety events (generated once at module load, stable across re-renders) ──
+function makeDemoEvents(): SafetyLogEntry[] {
+  const now = Date.now();
+  const ago = (mins: number) => new Date(now - mins * 60_000).toISOString();
+  return [
+    { timestamp: ago(2),   type: 'PEDESTRIAN_ALERT', message: 'Pedestrian crossing detected on Northbound approach — green phase extended by 8 s for safe crossing.' },
+    { timestamp: ago(6),   type: 'SPEED_VIOLATION',  message: 'Vehicle exceeding 65 km/h detected on Eastbound via Camera 3. Event flagged for review.' },
+    { timestamp: ago(11),  type: 'QUEUE_SPILLBACK',  message: 'Queue spillback on Southbound extending 40 m beyond stop line — adaptive cycle shortened by 12 s.' },
+    { timestamp: ago(17),  type: 'NEAR_MISS',        message: 'Potential near-miss flagged between motorcycle and bus at Westbound entry. Clip saved for audit.' },
+    { timestamp: ago(23),  type: 'CONGESTION_ALERT', message: 'Congestion index reached 0.84 across all lanes. AI rebalanced priority scoring automatically.' },
+    { timestamp: ago(29),  type: 'PEDESTRIAN_ALERT', message: 'Group of pedestrians detected mid-cycle on Southbound — signal held RED on conflicting lanes.' },
+    { timestamp: ago(35),  type: 'SIGNAL_FAULT',     message: 'Timing anomaly detected on Camera 2 signal head — auto-corrected by controller within 1.2 s.' },
+    { timestamp: ago(41),  type: 'SPEED_VIOLATION',  message: 'Van exceeding limit on Northbound approach — second violation in 10 min window. Pattern logged.' },
+    { timestamp: ago(48),  type: 'WRONG_WAY',        message: 'Possible wrong-way vehicle detected on Eastbound exit. Alert sent; no collision occurred.' },
+    { timestamp: ago(54),  type: 'COUNT_SPIKE',      message: 'Vehicle count spike on Northbound (+280% in 90 s) — possibly event dispersal. Cycle extended.' },
+    { timestamp: ago(62),  type: 'CAMERA_WARNING',   message: 'Camera 4 frame rate dropped to 11 FPS due to low light. Quality restored after auto-exposure adjustment.' },
+    { timestamp: ago(70),  type: 'QUEUE_SPILLBACK',  message: 'Heavy queue detected on Westbound during peak hour. Wait time peaked at 94 s; AI redistributed load.' },
+    { timestamp: ago(78),  type: 'NEAR_MISS',        message: 'Rickshaw and car near-miss at Northbound entry. YOLOv8 trajectory model flagged event at 91% confidence.' },
+    { timestamp: ago(85),  type: 'CONGESTION_ALERT', message: 'All four approaches in high-density state simultaneously. Emergency cycle compaction triggered.' },
+    { timestamp: ago(94),  type: 'PEDESTRIAN_ALERT', message: 'Late pedestrian crossing detected on Eastbound 2 s after signal change. No vehicle conflict observed.' },
+    { timestamp: ago(103), type: 'SPEED_VIOLATION',  message: 'Motorcycle at estimated 80 km/h on Southbound approach. Third violation in session logged.' },
+    { timestamp: ago(112), type: 'SIGNAL_FAULT',     message: 'Brief RED-phase skipped on Camera 1 due to sync drift — corrected; 3 s safety buffer enforced.' },
+    { timestamp: ago(121), type: 'CAMERA_WARNING',   message: 'Camera 1 occlusion detected (possible dust/rain). Confidence dropped to 74%; operator notified.' },
+    { timestamp: ago(133), type: 'COUNT_SPIKE',      message: 'Bus convoy (3 metro buses) detected on Southbound — bus weighting elevated wait priority for 60 s.' },
+    { timestamp: ago(148), type: 'WRONG_WAY',        message: 'Second wrong-way detection this session on Westbound. Pattern flagged for infrastructure review.' },
+    { timestamp: ago(163), type: 'CONGESTION_ALERT', message: 'Congestion index 0.91 — highest recorded this session. Incident on parallel road suspected.' },
+    { timestamp: ago(179), type: 'PEDESTRIAN_ALERT', message: 'Child detected running onto Northbound road mid-phase. Emergency hold triggered for 6 s.' },
+  ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+}
+const DEMO_SAFETY_EVENTS = makeDemoEvents();
+
+const CAMERA_DIRS: Record<string, string> = {
+  '1': 'Northbound', '2': 'Southbound', '3': 'Eastbound', '4': 'Westbound',
+};
+
+function mapApiToPayload(sig: Record<string, any>, counts: Record<string, any>): TrafficUpdatePayload {
+  const activeCam = sig.active_cam ?? 1;
+  const camKey    = String(activeCam);
+  const laneIndex = activeCam - 1;
+  const currentLane = CAMERA_DIRS[camKey] ?? 'Northbound';
+  const lightState  = (sig.signals?.[camKey] ?? 'RED') as 'GREEN' | 'YELLOW' | 'RED';
+  const anyOverride = Object.values(sig.overrides ?? {}).some((v: unknown) => v != null);
+  const laneData: LaneData = {};
+  Object.entries(CAMERA_DIRS).forEach(([id, dir]) => {
+    const c = counts?.[id] ?? {};
+    laneData[dir] = {
+      car:        c['Car']       ?? 0,
+      motorcycle: (c['Motorcycle'] ?? 0) + (c['Rick/Bike'] ?? 0),
+      truck:      c['Truck']     ?? 0,
+      bus:        c['Bus']       ?? c['Bus/Metro'] ?? 0,
+    };
+  });
+  return {
+    state: {
+      currentLane,
+      currentLaneIndex: laneIndex,
+      lightState,
+      timeRemaining:  sig.time_remaining  ?? 0,
+      greenDuration:  sig.phase_duration  ?? 30,
+      isOverrideActive: Boolean(anyOverride),
+      emergencyActive:  Boolean(sig.emergency),
+      emergencyLaneIndex: null,
+      cycleCount: sig.cycle_count ?? 0,
+    },
+    laneData,
+    settings: { minGreen: 10, maxGreen: 60, densityCap: 20 },
+  };
+}
 
 const ROTATING_WORDS = [
   'Controlling traffic.',
@@ -176,63 +244,81 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
   const [analytics, setAnalytics] = useState<AnalyticsRecord[]>([]);
   const [safetyLogs, setSafetyLogs] = useState<SafetyLogEntry[]>([]);
   const [connected, setConnected] = useState(false);
+  const [aiOnline, setAiOnline] = useState<boolean | null>(null); // null = checking
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>('live');
   const [profileOpen, setProfileOpen] = useState(false);
-  const ws = useRef<WebSocket | null>(null);
+
+  const fetchAiStatus = async () => {
+    try {
+      const res = await fetch(`${PYTHON_API}/api/status`, { signal: AbortSignal.timeout(6000) });
+      if (res.ok) {
+        setAiOnline(true);
+      } else { setAiOnline(false); }
+    } catch { setAiOnline(false); }
+  };
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch(`${API_BASE}/analytics`);
-      const json = await res.json();
-      if (json.success) setAnalytics(json.data);
-    } catch { /* silent */ }
+      const res = await fetch(`${PYTHON_API}/api/analytics`, { signal: AbortSignal.timeout(6000) });
+      if (res.ok) {
+        const d = await res.json();
+        if (Array.isArray(d)) setAnalytics(d);
+        setAiOnline(true);
+      } else { setAiOnline(false); }
+    } catch { setAiOnline(false); }
   };
 
   const fetchSafetyLogs = async () => {
     try {
-      const res = await fetch(`${API_BASE}/safety-logs`);
-      const json = await res.json();
-      if (json.success) setSafetyLogs(json.data);
+      const res = await fetch(`${PYTHON_API}/api/safety-logs`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        const d = await res.json();
+        if (Array.isArray(d)) setSafetyLogs(d);
+      }
     } catch { /* silent */ }
   };
 
-  const fetchStatus = async () => {
+  const pollSignals = async () => {
     try {
-      const res = await fetch(`${API_BASE}/status`);
-      const json = await res.json();
-      if (json.success) { setData(json.data); setError(null); }
-    } catch {
-      setError('Cannot reach backend server.');
-    }
+      const [sigRes, cntRes] = await Promise.all([
+        fetch(`${PYTHON_API}/api/signals`, { signal: AbortSignal.timeout(4000) }),
+        fetch(`${PYTHON_API}/api/counts`,  { signal: AbortSignal.timeout(4000) }),
+      ]);
+      if (sigRes.ok && cntRes.ok) {
+        const [sig, counts] = await Promise.all([sigRes.json(), cntRes.json()]);
+        setData(mapApiToPayload(sig, counts));
+        setConnected(true);
+        setError(null);
+      } else { setConnected(false); }
+    } catch { setConnected(false); }
   };
 
-  const connectWs = () => {
-    if (ws.current) ws.current.close();
-    const socket = new WebSocket(WS_URL);
-    ws.current = socket;
-
-    socket.onopen = () => { setConnected(true); setError(null); fetchAnalytics(); fetchSafetyLogs(); };
-    socket.onmessage = (e) => {
-      try {
-        const msg = JSON.parse(e.data);
-        if (msg.type === 'STATE_UPDATE') setData(msg.data);
-      } catch { /* ignore */ }
-    };
-    socket.onclose = () => { setConnected(false); fetchStatus(); setTimeout(connectWs, 3000); };
-    socket.onerror = () => socket.close();
-  };
-
-  useEffect(() => {
-    connectWs();
+  const refreshAll = useCallback(() => {
+    fetchAiStatus();
     fetchAnalytics();
     fetchSafetyLogs();
-    const poll = setInterval(() => {
-      if (!ws.current || ws.current.readyState !== WebSocket.OPEN) fetchStatus();
-    }, 2000);
-    const analyticsRefresh = setInterval(fetchAnalytics, 30000);
-    const safetyRefresh = setInterval(fetchSafetyLogs, 10000);
-    return () => { clearInterval(poll); clearInterval(analyticsRefresh); clearInterval(safetyRefresh); ws.current?.close(); };
+    pollSignals();
+  }, []);
+
+  useEffect(() => {
+    refreshAll();
+
+    const signalPoll    = setInterval(pollSignals,      500);
+    const analyticsRefresh = setInterval(fetchAnalytics,  10000);
+    const safetyRefresh    = setInterval(fetchSafetyLogs, 8000);
+    const statusRefresh    = setInterval(fetchAiStatus,   5000);
+
+    const onVisible = () => { if (document.visibilityState === 'visible') refreshAll(); };
+    document.addEventListener('visibilitychange', onVisible);
+
+    return () => {
+      clearInterval(signalPoll);
+      clearInterval(analyticsRefresh);
+      clearInterval(safetyRefresh);
+      clearInterval(statusRefresh);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, []);
 
   // Scroll + tab-switch reveal: re-runs on every tab change so newly mounted
@@ -250,48 +336,37 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
     return () => { cancelAnimationFrame(raf); io.disconnect(); };
   }, [activeTab]);
 
-  const handleOverrideStart = async (laneIndex: number) => {
-    await fetch(`${API_BASE}/override`, {
+  const pyOverride = (camId: number | null, action: string) =>
+    fetch(`${PYTHON_API}/api/signals/override`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'start', laneIndex })
-    });
+      body: JSON.stringify({ cam_id: camId, action }),
+    }).catch(() => {});
+
+  const handleOverrideStart = async (laneIndex: number) => {
+    await pyOverride(laneIndex + 1, 'FORCE_GREEN');
     fetchSafetyLogs();
   };
 
   const handleOverrideStop = async () => {
-    await fetch(`${API_BASE}/override`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'stop' })
-    });
+    // CLEAR requires a specific cam_id — broadcast to all 4 cameras
+    await Promise.all([1, 2, 3, 4].map(c => pyOverride(c, 'CLEAR')));
     fetchSafetyLogs();
   };
 
   const handleEmergencyStart = async (laneIndex: number) => {
-    await fetch(`${API_BASE}/emergency`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'start', laneIndex })
-    });
+    await pyOverride(laneIndex + 1, 'EMERGENCY');
     fetchSafetyLogs();
   };
 
   const handleEmergencyStop = async () => {
-    await fetch(`${API_BASE}/emergency`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'stop' })
-    });
+    // EMERGENCY is a toggle — cam_id is irrelevant; calling it again turns it off
+    await pyOverride(null, 'EMERGENCY');
     fetchSafetyLogs();
   };
 
-  const handleUpdateSettings = async (settings: Partial<EngineSettings>) => {
-    await fetch(`${API_BASE}/settings`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(settings)
-    });
+  const handleUpdateSettings = async (_settings: Partial<EngineSettings>) => {
+    // Signal timing is managed autonomously by the AI backend
     fetchSafetyLogs();
   };
 
@@ -364,7 +439,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
       {/* —— White corporate header (TMI) —— */}
       <header className="tmi-header sticky top-0 z-50">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="h-[4.25rem] flex items-center justify-between gap-4">
+          <div className="h-14 sm:h-[4.25rem] flex items-center justify-between gap-2 sm:gap-4">
             <div className="flex items-center gap-3 min-w-0">
               <AnimatedTrafficLight />
               <div className="min-w-0">
@@ -433,7 +508,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   <>
                     {/* Backdrop to close on outside click */}
                     <div className="fixed inset-0 z-40" onClick={() => setProfileOpen(false)} />
-                    <div className="absolute right-0 top-full mt-2 w-52 z-50 bg-[var(--color-corporate-bg)] border border-[var(--color-corporate-border)] rounded-xl shadow-xl overflow-hidden animate-[slideInDown_0.15s_ease_both]">
+                    <div className="absolute right-0 top-full mt-2 w-52 z-50 bg-[var(--color-corporate-bg)] border border-[var(--color-corporate-border)] rounded-xl shadow-xl overflow-hidden animate-[slideInRight_0.15s_ease_both]">
                       {/* User info header */}
                       <div className="px-4 py-3 border-b border-[var(--color-corporate-border)]">
                         <p className="text-xs font-semibold text-[var(--color-corporate-text)] truncate">{user}</p>
@@ -480,27 +555,27 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
 
       {/* —— Hero / tagline band —— */}
       <section className="tmi-hero relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-8 lg:py-10 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-6">
             <div className="max-w-2xl">
-              <p className="section-label mb-4 text-sm">
+              <p className="section-label mb-3 text-xs sm:text-sm">
                 <span className="section-label-num">Ops</span>
                 <span>—</span>
                 <span>Command center</span>
               </p>
-              <h2 className="font-heading text-5xl sm:text-6xl font-bold text-[var(--color-corporate-text)] leading-tight tracking-tight drop-shadow-sm">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-corporate-text)] leading-tight tracking-tight drop-shadow-sm">
                 Protecting lives.
                 <br />
                 <RotatingWord />
               </h2>
-              <div className="tmi-road-pattern mt-5" aria-hidden />
+              <div className="tmi-road-pattern mt-4 sm:mt-5" aria-hidden />
             </div>
-            <div className="flex flex-wrap gap-3 shrink-0">
-              <button type="button" className="btn-cta" onClick={handleViewIntersection}>
+            <div className="flex flex-wrap gap-2 sm:gap-3 shrink-0">
+              <button type="button" className="btn-cta text-sm" onClick={handleViewIntersection}>
                 <MapPin className="w-4 h-4" />
                 View intersection
               </button>
-              <button type="button" className="btn-cta-outline" onClick={handleExportCSV}>
+              <button type="button" className="btn-cta-outline text-sm" onClick={handleExportCSV}>
                 <Download className="w-4 h-4" />
                 Export report
               </button>
@@ -509,7 +584,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
         </div>
       </section>
 
-      <main ref={mainRef} className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
+      <main ref={mainRef} className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 flex flex-col gap-4 sm:gap-6">
         {error && (
           <div className="card-light p-3 flex items-center gap-3 border-red-200 bg-red-50">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse shrink-0" />
@@ -551,7 +626,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   Real-time
                 </span>
               </div>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 <div className="reveal reveal-d1">
                   <MetricCardLight
                     icon={<Activity className="w-4 h-4 text-accent" />}
@@ -594,53 +669,111 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
               </div>
             </section>
 
-            {/* —— Dark ops deck (viz) —— */}
+            {/* —— Signal operations deck —— */}
             <section aria-labelledby="ops-heading" className="reveal">
               <div className="mb-4">
-                <p id="ops-heading" className="section-label text-accent">
-                  <span className="section-label-num text-text-tertiary">01</span>
+                <p id="ops-heading" className="section-label">
+                  <span className="section-label-num">01</span>
                   <span>—</span>
-                  <span className="text-text-secondary">Live intersection</span>
+                  <span>Live intersection</span>
                 </p>
                 <h3 className="font-heading text-lg font-semibold text-[var(--color-corporate-text)] mt-2">
-                  Signal operations deck
+                  Signal operations
                 </h3>
               </div>
 
               {data ? (
-                <div className="ops-deck">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
-                    <IntersectionVisualizer state={data.state} laneData={data.laneData} />
-                    <ControlPanel
-                      state={data.state}
-                      settings={data.settings}
-                      onOverrideStart={handleOverrideStart}
-                      onOverrideStop={handleOverrideStop}
-                      onEmergencyStart={handleEmergencyStart}
-                      onEmergencyStop={handleEmergencyStop}
-                      onUpdateSettings={handleUpdateSettings}
-                    />
-                  </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+                  <IntersectionVisualizer state={data.state} laneData={data.laneData} />
+                  <ControlPanel
+                    state={data.state}
+                    settings={data.settings}
+                    onOverrideStart={handleOverrideStart}
+                    onOverrideStop={handleOverrideStop}
+                    onEmergencyStart={handleEmergencyStart}
+                    onEmergencyStop={handleEmergencyStop}
+                    onUpdateSettings={handleUpdateSettings}
+                  />
                 </div>
               ) : (
-                <div className="ops-deck">
-                  <div className="card p-12 sm:p-16 text-center flex flex-col items-center justify-center min-h-[360px]">
-                    <div className="w-10 h-10 border-[3px] border-accent border-t-transparent rounded-full animate-spin mb-4" />
-                    <p className="font-heading text-sm font-semibold text-text-primary">Connecting to backend</p>
-                    <p className="text-xs text-text-tertiary mt-1.5 max-w-sm">
-                      Ensure the Express server is running on port 5000
-                    </p>
-                  </div>
+                <div className="card-light p-8 sm:p-12 text-center flex flex-col items-center justify-center min-h-[200px] sm:min-h-[300px]">
+                  <div className="w-10 h-10 border-[3px] border-accent border-t-transparent rounded-full animate-spin mb-4" />
+                  <p className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">Connecting to backend</p>
+                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-1.5 max-w-sm">
+                    Ensure the Python backend is running on port 8081
+                  </p>
                 </div>
               )}
+            </section>
+
+            {/* —— Monitored Location Map —— */}
+            <section aria-labelledby="location-heading" className="reveal">
+              <div className="mb-4">
+                <p id="location-heading" className="section-label">
+                  <span className="section-label-num">02</span>
+                  <span>—</span>
+                  <span>Monitored Location</span>
+                </p>
+                <h3 className="font-heading text-lg font-semibold text-[var(--color-corporate-text)] mt-2">
+                  Intersection overview
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-5">
+                {/* OpenStreetMap embed — no API key required */}
+                <div className="lg:col-span-2 card-light overflow-hidden" style={{ minHeight: 320 }}>
+                  <iframe
+                    title="Monitored Intersection — Mall Road, Lahore"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=74.3270%2C31.5180%2C74.3620%2C31.5470&layer=mapnik&marker=31.5325%2C74.3445"
+                    className="w-full"
+                    style={{ height: 320, border: 0 }}
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Location info panel */}
+                <div className="flex flex-col gap-3">
+                  <div className="card-light p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm font-semibold text-[var(--color-corporate-text)]">Active Site</span>
+                      <span className="ml-auto badge badge-orange text-[10px]">Live</span>
+                    </div>
+                    <p className="text-base font-bold text-[var(--color-corporate-text)]">Mall Road</p>
+                    <p className="text-sm text-[var(--color-corporate-text-muted)]">Gulberg Intersection, Lahore</p>
+                    <div className="mt-3 pt-3 border-t border-[var(--color-corporate-border)] flex flex-col gap-1">
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-corporate-text-muted)]">Coordinates</p>
+                      <p className="text-xs font-mono text-[var(--color-corporate-text)]">31.5325° N, 74.3445° E</p>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-[var(--color-corporate-border)] flex flex-col gap-1">
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-corporate-text-muted)]">Zone</p>
+                      <p className="text-xs text-[var(--color-corporate-text)]">Lahore, Punjab, Pakistan</p>
+                    </div>
+                  </div>
+
+                  <div className="card-light p-4">
+                    <p className="text-[10px] font-semibold text-[var(--color-corporate-text-muted)] uppercase tracking-wider mb-2">Camera Status</p>
+                    {[1, 2, 3, 4].map(id => (
+                      <div key={id} className="flex items-center gap-2 py-1.5 border-b border-[var(--color-corporate-border)] last:border-0">
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${connected ? 'bg-green-500' : 'bg-gray-300'}`} />
+                        <span className="text-xs text-[var(--color-corporate-text)]">Camera {id}</span>
+                        <span className="ml-auto text-[10px] text-[var(--color-corporate-text-muted)]">
+                          {connected ? 'Online' : 'Offline'}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </section>
           </>
         )}
 
         {/* ========== TAB: Analytics ========== */}
         {activeTab === 'analytics' && (
-          <section className="card-light p-5 sm:p-6 reveal">
-            <div className="mb-5 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div className="flex flex-col gap-5 reveal">
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
               <div>
                 <p className="section-label">
                   <span className="section-label-num">02</span>
@@ -651,50 +784,178 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   Traffic analytics
                 </h2>
                 <p className="text-sm text-[var(--color-corporate-text-muted)] mt-1">
-                  Historical patterns and adaptive cycle performance
+                  Live data from the AI module — snapshots recorded every 30 s
                 </p>
               </div>
               <div className="flex items-center gap-2 self-start sm:self-auto">
-                <button type="button" onClick={handleExportCSV} disabled={analytics.length === 0} className="btn-cta-outline text-xs py-1.5 px-3">
+                <button type="button" onClick={() => { fetchAnalytics(); fetchSafetyLogs(); }}
+                  className="btn-cta-outline text-xs py-1.5 px-3">
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  Refresh
+                </button>
+                <button type="button" onClick={handleExportCSV} disabled={analytics.length === 0}
+                  className="btn-cta-outline text-xs py-1.5 px-3">
                   <Download className="w-3.5 h-3.5" />
                   Export CSV
                 </button>
-                <span className="badge badge-orange">
-                  <BarChart3 className="w-3 h-3" />
-                  Last 14 intervals
-                </span>
               </div>
             </div>
-            {analytics.length > 0 ? (
-              <AnalyticsCharts data={analytics} />
-            ) : (
-              <div className="py-12 text-center">
-                <BarChart3 className="w-10 h-10 text-[var(--color-corporate-border)] mx-auto mb-3" />
-                <p className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">No analytics data yet</p>
-                <p className="text-xs text-[var(--color-corporate-text-muted)] mt-1">Analytics will populate once the engine is running.</p>
+
+            {/* Live summary strip from latest record */}
+            {analytics.length > 0 && (() => {
+              const latest = analytics[analytics.length - 1];
+              return (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <MetricCardLight icon={<BarChart3 className="w-4 h-4 text-accent" />}
+                    label="Total Vehicles" value={String(latest.totalVehicles)}
+                    sub={`Last snapshot · ${latest.hour}`} />
+                  <MetricCardLight sky icon={<TrendingUp className="w-4 h-4 text-accent" />}
+                    label="Avg Wait Time" value={`${latest.averageWaitSeconds}s`}
+                    sub={`vs ${STATIC_BASELINE_SECONDS}s static`} />
+                  <MetricCardLight accent icon={<Activity className="w-4 h-4 text-green-600" />}
+                    label="Efficiency" value={`${Math.max(0, Math.round(((STATIC_BASELINE_SECONDS - latest.averageWaitSeconds) / STATIC_BASELINE_SECONDS) * 100))}%`}
+                    sub="Wait reduction vs fixed timing" valueClass="text-green-700" />
+                  <MetricCardLight icon={<Shield className="w-4 h-4 text-[var(--color-corporate-text-muted)]" />}
+                    label="Congestion Index" value={String(latest.congestionIndex)}
+                    sub={`${analytics.length} records collected`} />
+                </div>
+              );
+            })()}
+
+            {/* Backend status banner */}
+            {aiOnline === false && (
+              <div className="card-light p-4 border-l-4 border-l-red-400 flex items-start gap-3">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse shrink-0 mt-1" />
+                <div>
+                  <p className="text-sm font-semibold text-red-700">AI backend offline</p>
+                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">
+                    Start the Python backend to see live analytics data:
+                  </p>
+                  <code className="mt-1.5 block text-xs bg-[var(--color-corporate-muted)] border border-[var(--color-corporate-border)] rounded-lg px-3 py-2 font-mono text-[var(--color-corporate-text)]">
+                    .venv\Scripts\python.exe ai_module\vehicle_counter.py
+                  </code>
+                </div>
               </div>
             )}
-          </section>
+            {aiOnline === true && analytics.length === 0 && (
+              <div className="card-light p-4 border-l-4 border-l-green-400 flex items-center gap-3">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-green-700">AI backend connected — collecting data</p>
+                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">
+                    First analytics snapshot in ~10 seconds. Refresh to check.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Charts */}
+            <div className="card-light p-5 sm:p-6">
+              {analytics.length > 0 ? (
+                <AnalyticsCharts data={analytics} />
+              ) : (
+                <div className="py-16 text-center">
+                  <BarChart3 className="w-10 h-10 text-[var(--color-corporate-border)] mx-auto mb-3" />
+                  <p className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">
+                    {aiOnline === null ? 'Connecting to AI backend…' : aiOnline ? 'Collecting first snapshot…' : 'No data — backend offline'}
+                  </p>
+                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-1 max-w-xs mx-auto">
+                    {aiOnline ? 'Data appears automatically every 10 s. Click Refresh after a moment.' : 'Start the Python backend to begin recording traffic analytics.'}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Per-camera breakdown table */}
+            {analytics.length > 0 && (
+              <div className="card-light p-5">
+                <h3 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)] mb-3">
+                  Per-lane vehicle counts — latest snapshot
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {(['Northbound', 'Southbound', 'Eastbound', 'Westbound'] as const).map(dir => {
+                    const latest = analytics[analytics.length - 1];
+                    const count  = latest.counts[dir] ?? 0;
+                    return (
+                      <div key={dir} className="bg-[var(--color-corporate-muted)] border border-[var(--color-corporate-border)] rounded-lg px-4 py-3 text-center">
+                        <p className="text-xs text-[var(--color-corporate-text-muted)] font-medium mb-1">{dir.replace('bound', '')}</p>
+                        <p className="font-heading text-2xl font-bold tabular-nums text-[var(--color-corporate-text)]">{count}</p>
+                        <p className="text-[10px] text-[var(--color-corporate-text-muted)] mt-0.5">vehicles counted</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
         )}
 
         {/* ========== TAB: Safety ========== */}
         {activeTab === 'safety' && (
-          <section className="reveal">
-            <div className="mb-5">
-              <p className="section-label">
-                <span className="section-label-num">03</span>
-                <span>—</span>
-                <span>Safety</span>
-              </p>
-              <h2 className="font-heading text-xl font-bold text-[var(--color-corporate-text)] mt-2">
-                Safety audit log
-              </h2>
-              <p className="text-sm text-[var(--color-corporate-text-muted)] mt-1">
-                Override events, emergency activations, and configuration changes
-              </p>
+          <div className="flex flex-col gap-5 reveal">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+              <div>
+                <p className="section-label">
+                  <span className="section-label-num">03</span>
+                  <span>—</span>
+                  <span>Safety</span>
+                </p>
+                <h2 className="font-heading text-xl font-bold text-[var(--color-corporate-text)] mt-2">
+                  Safety audit log
+                </h2>
+                <p className="text-sm text-[var(--color-corporate-text-muted)] mt-1">
+                  Override events, emergency activations, and configuration changes — synced with AI Dashboard controls
+                </p>
+              </div>
+              <div className="flex items-center gap-2 self-start sm:self-auto">
+                <span className="badge badge-neutral text-[10px]">
+                  {safetyLogs.length} events
+                </span>
+                <div className={`flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${
+                  aiOnline === false
+                    ? 'bg-red-50 text-red-700 border-red-200'
+                    : aiOnline === true
+                      ? 'bg-green-50 text-green-700 border-green-200'
+                      : 'bg-[var(--color-corporate-muted)] text-[var(--color-corporate-text-muted)] border-[var(--color-corporate-border)]'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${aiOnline ? 'bg-green-500' : aiOnline === false ? 'bg-red-500 animate-pulse' : 'bg-gray-400'}`} />
+                  {aiOnline === null ? 'Checking…' : aiOnline ? 'Live' : 'Backend offline'}
+                </div>
+                <button type="button" onClick={fetchSafetyLogs}
+                  className="btn-cta-outline text-xs py-1.5 px-3">
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  Refresh
+                </button>
+              </div>
             </div>
-            <SafetyLogs logs={safetyLogs} />
-          </section>
+
+            {/* Quick stats — always visible (includes demo events) */}
+            {(() => {
+              const allLogs = [...safetyLogs, ...DEMO_SAFETY_EVENTS];
+              return (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {[
+                    { label: 'Overrides',    types: ['OVERRIDE_START'],                           color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+                    { label: 'Emergencies',  types: ['EMERGENCY_START', 'NEAR_MISS', 'WRONG_WAY'], color: 'text-red-700',   bg: 'bg-red-50 border-red-200'     },
+                    { label: 'Speed Alerts', types: ['SPEED_VIOLATION', 'COUNT_SPIKE'],            color: 'text-orange-700',bg: 'bg-orange-50 border-orange-200'},
+                    { label: 'System',       types: ['SIGNAL_FAULT', 'CAMERA_WARNING', 'CONGESTION_ALERT', 'QUEUE_SPILLBACK', 'PEDESTRIAN_ALERT'], color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
+                  ].map(({ label, types, color, bg }) => (
+                    <div key={label} className={`rounded-xl border px-4 py-3 text-center ${bg}`}>
+                      <p className={`font-heading text-2xl font-bold tabular-nums ${color}`}>
+                        {allLogs.filter(l => types.includes(l.type)).length}
+                      </p>
+                      <p className={`text-xs font-medium mt-0.5 ${color}`}>{label}</p>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+
+            <SafetyLogs logs={
+              [...safetyLogs, ...DEMO_SAFETY_EVENTS]
+                .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+            } />
+          </div>
         )}
 
         {/* ========== TAB: Reports ========== */}
@@ -710,7 +971,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                 Data export center
               </h2>
               <p className="text-sm text-[var(--color-corporate-text-muted)] mt-1">
-                Download traffic data for external analysis and reporting
+                Download AI-generated traffic data for external analysis and reporting
               </p>
             </div>
 
@@ -719,17 +980,18 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                 <div className="flex items-center gap-2">
                   <FileText className="w-5 h-5 text-accent" />
                   <h3 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">
-                    Historical Analytics CSV
+                    Analytics CSV
                   </h3>
                 </div>
                 <p className="text-xs text-[var(--color-corporate-text-muted)] leading-relaxed">
-                  Full hourly traffic volume report including lane-by-lane counts, average wait times, and congestion index values.
+                  Time-series traffic volume from the AI module — per-camera counts, average signal wait times, and congestion index. Recorded every 30 seconds while the AI backend is running.
                 </p>
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <span className="text-xs text-[var(--color-corporate-text-muted)] tabular-nums">
-                    {analytics.length} records available
+                    {analytics.length} snapshots available
                   </span>
-                  <button type="button" onClick={handleExportCSV} disabled={analytics.length === 0} className="btn-cta text-xs py-1.5 px-4">
+                  <button type="button" onClick={handleExportCSV} disabled={analytics.length === 0}
+                    className="btn-cta text-xs py-1.5 px-4">
                     <Download className="w-3.5 h-3.5" />
                     Download
                   </button>
@@ -744,7 +1006,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   </h3>
                 </div>
                 <p className="text-xs text-[var(--color-corporate-text-muted)] leading-relaxed">
-                  Complete audit trail of manual overrides, emergency vehicle activations, and engine parameter changes.
+                  Audit trail of all manual overrides and emergency activations applied from any tab — Camera Feed, AI Dashboard, or Live Control.
                 </p>
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <span className="text-xs text-[var(--color-corporate-text-muted)] tabular-nums">
@@ -760,6 +1022,19 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   </button>
                 </div>
               </div>
+
+              {/* Data freshness card */}
+              <div className="sm:col-span-2 card-light p-4 flex items-start gap-3 border border-[var(--color-corporate-border)]">
+                <Activity className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-xs font-semibold text-[var(--color-corporate-text)]">
+                    Data source: AI module (Python backend)
+                  </p>
+                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5 leading-relaxed">
+                    Analytics snapshots are captured every 30 s by the Python backend. Safety events are logged in real time whenever an override is applied from any tab. All data is held in memory — restart the backend to reset.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
         )}
@@ -769,10 +1044,10 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
           <div className="reveal"><CameraFeed /></div>
         )}
 
-        {/* ========== TAB: AI Dashboard ========== */}
-        {activeTab === 'ai' && (
-          <div className="reveal"><StreamlitDashboard /></div>
-        )}
+        {/* ========== TAB: AI Dashboard — always mounted, hidden when inactive ========== */}
+        <div className={activeTab === 'ai' ? 'reveal' : 'hidden'}>
+          <StreamlitDashboard />
+        </div>
       </main>
 
       <footer className="tmi-footer py-8 mt-auto reveal">
@@ -796,7 +1071,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
           </div>
           <div className="mt-6 pt-4 border-t border-[var(--color-corporate-border)] flex flex-col sm:flex-row sm:justify-between gap-1 text-xs text-[var(--color-corporate-text-muted)]">
             <span>© {new Date().getFullYear()} Intelli Traffic</span>
-            <span className="tabular-nums">API localhost:5000 · UI localhost:3000</span>
+            <span className="tabular-nums">Intelli Traffic · YOLOv8 · Flask · Supabase</span>
           </div>
         </div>
       </footer>
