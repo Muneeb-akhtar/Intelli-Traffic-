@@ -32,7 +32,7 @@ except ImportError:
     print("[WARN] ultralytics not installed — detection disabled")
 
 # ── Config ────────────────────────────────────────────────────────────────────
-PORT         = 8081
+PORT         = int(os.environ.get('PORT', 8081))
 YOLO_MODEL   = 'yolov8n.pt'
 CONF         = 0.35
 TARGET_FPS   = 10         # per camera (4 cams × 10 = 40 YOLO calls/s)
