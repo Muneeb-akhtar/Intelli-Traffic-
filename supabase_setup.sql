@@ -47,3 +47,26 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
+
+-- 5. Analytics table
+create table if not exists public.analytics (
+  id                   bigserial primary key,
+  timestamp            text not null,
+  hour                 text,
+  counts               jsonb,
+  total_vehicles       integer default 0,
+  average_wait_seconds float   default 0,
+  congestion_index     float   default 0,
+  created_at           timestamptz default now()
+);
+alter table public.analytics disable row level security;
+
+-- 6. Safety logs table
+create table if not exists public.safety_logs (
+  id         bigserial primary key,
+  timestamp  text not null,
+  type       text not null,
+  message    text,
+  created_at timestamptz default now()
+);
+alter table public.safety_logs disable row level security;

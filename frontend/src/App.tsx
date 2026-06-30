@@ -260,21 +260,31 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch(`${PYTHON_API}/api/analytics`, { signal: AbortSignal.timeout(6000) });
+      const res = await fetch(`/api/analytics`, { signal: AbortSignal.timeout(8000) });
       if (res.ok) {
         const d = await res.json();
-        if (Array.isArray(d)) setAnalytics(d);
-        setAiOnline(true);
-      } else { setAiOnline(false); }
-    } catch { setAiOnline(false); }
+        if (Array.isArray(d)) setAnalytics(d.map((r: any) => ({
+          timestamp:          r.timestamp,
+          hour:               r.hour,
+          counts:             r.counts,
+          totalVehicles:      r.total_vehicles,
+          averageWaitSeconds: r.average_wait_seconds,
+          congestionIndex:    r.congestion_index,
+        })));
+      }
+    } catch { /* silent — Node API always available */ }
   };
 
   const fetchSafetyLogs = async () => {
     try {
-      const res = await fetch(`${PYTHON_API}/api/safety-logs`, { signal: AbortSignal.timeout(3000) });
+      const res = await fetch(`/api/safety-logs`, { signal: AbortSignal.timeout(8000) });
       if (res.ok) {
         const d = await res.json();
-        if (Array.isArray(d)) setSafetyLogs(d);
+        if (Array.isArray(d)) setSafetyLogs(d.map((r: any) => ({
+          timestamp: r.timestamp,
+          type:      r.type,
+          message:   r.message,
+        })));
       }
     } catch { /* silent */ }
   };

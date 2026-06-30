@@ -624,6 +624,22 @@ safety_log:       list[dict] = []
 CAMERA_DIRECTIONS = {1: 'Northbound', 2: 'Southbound', 3: 'Eastbound', 4: 'Westbound'}
 
 
+VERCEL_API = os.environ.get('VERCEL_API_URL', 'https://intelli-traffic.vercel.app')
+
+def _post_to_api(path: str, payload: dict):
+    try:
+        import urllib.request, json as _json
+        data = _json.dumps(payload).encode()
+        req  = urllib.request.Request(
+            f"{VERCEL_API}{path}",
+            data=data,
+            headers={'Content-Type': 'application/json'},
+            method='POST'
+        )
+        urllib.request.urlopen(req, timeout=5)
+    except Exception as e:
+        print(f"[API] POST {path} failed: {e}")
+
 def log_safety_event(event_type: str, message: str):
     from datetime import datetime
     entry = {'timestamp': datetime.now().isoformat(), 'type': event_type, 'message': message}
@@ -631,6 +647,7 @@ def log_safety_event(event_type: str, message: str):
         safety_log.append(entry)
         if len(safety_log) > 300:
             safety_log[:] = safety_log[-300:]
+    threading.Thread(target=_post_to_api, args=('/api/safety-logs', entry), daemon=True).start()
 
 
 def record_analytics():
@@ -663,6 +680,7 @@ def record_analytics():
         analytics_buffer.append(record)
         if len(analytics_buffer) > 100:
             analytics_buffer[:] = analytics_buffer[-100:]
+    threading.Thread(target=_post_to_api, args=('/api/analytics', record), daemon=True).start()
 
 
 def analytics_loop():
