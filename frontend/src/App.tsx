@@ -832,14 +832,14 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
               );
             })()}
 
-            {/* Backend status banner */}
-            {aiOnline === false && (
-              <div className="card-light p-4 border-l-4 border-l-red-400 flex items-start gap-3">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse shrink-0 mt-1" />
+            {/* Detection status banner — only shown when no stored data exists */}
+            {aiOnline === false && analytics.length === 0 && (
+              <div className="card-light p-4 border-l-4 border-l-amber-400 flex items-start gap-3">
+                <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse shrink-0 mt-1" />
                 <div>
-                  <p className="text-sm font-semibold text-red-700">AI backend offline</p>
+                  <p className="text-sm font-semibold text-amber-700">No analytics recorded yet</p>
                   <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">
-                    Start the Python backend to see live analytics data:
+                    Start the Python backend to begin recording traffic analytics. Data is stored permanently in the cloud.
                   </p>
                   <code className="mt-1.5 block text-xs bg-[var(--color-corporate-muted)] border border-[var(--color-corporate-border)] rounded-lg px-3 py-2 font-mono text-[var(--color-corporate-text)]">
                     .venv\Scripts\python.exe ai_module\vehicle_counter.py
@@ -847,15 +847,18 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                 </div>
               </div>
             )}
+            {aiOnline === false && analytics.length > 0 && (
+              <div className="card-light p-4 border-l-4 border-l-blue-400 flex items-center gap-3">
+                <span className="w-2 h-2 bg-blue-500 rounded-full shrink-0" />
+                <p className="text-sm text-[var(--color-corporate-text-muted)]">
+                  Showing stored analytics — live detection offline. Start Python backend to record new data.
+                </p>
+              </div>
+            )}
             {aiOnline === true && analytics.length === 0 && (
               <div className="card-light p-4 border-l-4 border-l-green-400 flex items-center gap-3">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0" />
-                <div>
-                  <p className="text-sm font-semibold text-green-700">AI backend connected — collecting data</p>
-                  <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">
-                    First analytics snapshot in ~10 seconds. Refresh to check.
-                  </p>
-                </div>
+                <p className="text-sm font-semibold text-green-700">AI backend connected — first snapshot in ~10 seconds</p>
               </div>
             )}
 
@@ -867,10 +870,10 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                 <div className="py-16 text-center">
                   <BarChart3 className="w-10 h-10 text-[var(--color-corporate-border)] mx-auto mb-3" />
                   <p className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">
-                    {aiOnline === null ? 'Connecting to AI backend…' : aiOnline ? 'Collecting first snapshot…' : 'No data — backend offline'}
+                    No data yet
                   </p>
                   <p className="text-xs text-[var(--color-corporate-text-muted)] mt-1 max-w-xs mx-auto">
-                    {aiOnline ? 'Data appears automatically every 10 s. Click Refresh after a moment.' : 'Start the Python backend to begin recording traffic analytics.'}
+                    Start the Python backend to begin recording. Data will persist here permanently.
                   </p>
                 </div>
               )}
