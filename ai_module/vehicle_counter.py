@@ -628,15 +628,8 @@ VERCEL_API = os.environ.get('VERCEL_API_URL', 'https://intelli-traffic.vercel.ap
 
 def _post_to_api(path: str, payload: dict):
     try:
-        import urllib.request, json as _json
-        data = _json.dumps(payload).encode()
-        req  = urllib.request.Request(
-            f"{VERCEL_API}{path}",
-            data=data,
-            headers={'Content-Type': 'application/json'},
-            method='POST'
-        )
-        urllib.request.urlopen(req, timeout=5)
+        import requests as _req
+        _req.post(f"{VERCEL_API}{path}", json=payload, timeout=10, verify=False)
     except Exception as e:
         print(f"[API] POST {path} failed: {e}")
 
