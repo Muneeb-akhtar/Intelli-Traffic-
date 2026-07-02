@@ -25,6 +25,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Claude Code
+.claude/
+
 # ML model weights (large binary files)
 *.pt
 *.onnx
