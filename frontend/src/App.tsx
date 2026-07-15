@@ -290,20 +290,23 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
     } catch { /* silent */ }
   };
 
+  const signalFails = useRef(0);
+
   const pollSignals = async () => {
     try {
       const [sigRes, cntRes] = await Promise.all([
-        fetch(`${PYTHON_API}/api/signals`, { signal: AbortSignal.timeout(4000) }),
-        fetch(`${PYTHON_API}/api/counts`,  { signal: AbortSignal.timeout(4000) }),
+        fetch(`${PYTHON_API}/api/signals`, { signal: AbortSignal.timeout(8000) }),
+        fetch(`${PYTHON_API}/api/counts`,  { signal: AbortSignal.timeout(8000) }),
       ]);
       if (sigRes.ok && cntRes.ok) {
         const [sig, counts] = await Promise.all([sigRes.json(), cntRes.json()]);
         setData(mapApiToPayload(sig, counts));
+        signalFails.current = 0;
         setConnected(true);
         setTickKey(k => k + 1);
         setError(null);
-      } else { setConnected(false); }
-    } catch { setConnected(false); }
+      } else if (++signalFails.current >= 3) { setConnected(false); }
+    } catch { if (++signalFails.current >= 3) setConnected(false); }
   };
 
   const refreshAll = useCallback(() => {
@@ -316,7 +319,16 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
   useEffect(() => {
     refreshAll();
 
-    const signalPoll    = setInterval(pollSignals,      500);
+    // Sequential signal polling — waits for each response before the next
+    // request, so slow ngrok/GIL responses never stack up and flood the backend.
+    let alive = true;
+    const signalLoop = async () => {
+      if (!alive) return;
+      await pollSignals();
+      if (alive) setTimeout(signalLoop, 1000);
+    };
+    setTimeout(signalLoop, 1000);
+
     const analyticsRefresh = setInterval(fetchAnalytics,  10000);
     const safetyRefresh    = setInterval(fetchSafetyLogs, 8000);
     const statusRefresh    = setInterval(fetchAiStatus,   5000);
@@ -325,7 +337,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
     document.addEventListener('visibilitychange', onVisible);
 
     return () => {
-      clearInterval(signalPoll);
+      alive = false;
       clearInterval(analyticsRefresh);
       clearInterval(safetyRefresh);
       clearInterval(statusRefresh);
