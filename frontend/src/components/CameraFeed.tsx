@@ -85,7 +85,7 @@ function CameraCell({
   // concurrent requests when the backend is slow (YOLO at ~1 FPS blocks the GIL).
   useEffect(() => {
     let active = true;
-    const INTERVAL = 100;  // 10 FPS target; sequential pattern prevents flooding
+    const INTERVAL = 800;  // ~1 FPS to match Python YOLO processing speed
     const TIMEOUT  = 6000; // generous timeout for GIL-blocked Flask responses
 
     const poll = async () => {

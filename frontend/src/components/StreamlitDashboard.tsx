@@ -234,7 +234,7 @@ function CameraTile({ cam, connected, signals, onOverride }: {
   useEffect(() => {
     let alive = true;
     let failStreak = 0;
-    const INTERVAL = 100;  // 10 FPS target
+    const INTERVAL = 800;  // ~1 FPS to match Python YOLO processing speed
     const TIMEOUT  = 6000;
     const tick = async () => {
       try {
