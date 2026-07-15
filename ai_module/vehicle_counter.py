@@ -88,7 +88,9 @@ CAMERA_NAMES = [
 
 # ── Centroid Tracker ──────────────────────────────────────────────────────────
 class CentroidTracker:
-    def __init__(self, max_missing=18, match_dist=90):
+    def __init__(self, max_missing=18, match_dist=170):
+        # match_dist must cover the distance a fast vehicle moves between
+        # processed frames — at ~1 YOLO frame/s that is well over 90 px.
         self.tracks: dict[int, dict] = {}
         self.next_id = 0
         self.max_missing = max_missing
@@ -321,7 +323,11 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
             trk = tracker.tracks.get(tid)
             if trk is None or trk.get('counted'):
                 continue
-            if trk['prev_cy'] < line_y <= cy:
+            # Count crossings in BOTH directions — traffic in the opposite
+            # lane moves up the frame and was previously never counted.
+            crossed_down = trk['prev_cy'] < line_y <= cy
+            crossed_up   = trk['prev_cy'] > line_y >= cy
+            if crossed_down or crossed_up:
                 trk['counted'] = True
                 label = VEHICLE_CLS.get(cls_id, 'Car')
                 with state._lock:
