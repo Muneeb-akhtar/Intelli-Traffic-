@@ -88,20 +88,29 @@ CAMERA_NAMES = [
 
 # ── Centroid Tracker ──────────────────────────────────────────────────────────
 class CentroidTracker:
-    def __init__(self, max_missing=18, match_dist=170):
+    def __init__(self, max_missing=18, match_dist=260):
         # match_dist must cover the distance a fast vehicle moves between
-        # processed frames — at ~1 YOLO frame/s that is well over 90 px.
+        # processed frames — at ~1 YOLO frame/s a bus/truck can jump 250+ px.
         self.tracks: dict[int, dict] = {}
         self.next_id = 0
         self.max_missing = max_missing
         self.match_dist  = match_dist
+        # Tracks dropped this update that were never counted — the camera
+        # loop checks whether their overall path crossed the counting line.
+        self.removed: list[dict] = []
+
+    def _drop(self, tid):
+        trk = self.tracks.pop(tid)
+        if not trk['counted']:
+            self.removed.append(trk)
 
     def update(self, detections):
+        self.removed = []
         if not detections:
             for tid in list(self.tracks):
                 self.tracks[tid]['missing'] += 1
                 if self.tracks[tid]['missing'] > self.max_missing:
-                    del self.tracks[tid]
+                    self._drop(tid)
             return []
 
         unmatched = list(range(len(detections)))
@@ -127,12 +136,12 @@ class CentroidTracker:
             if tid not in assigned:
                 self.tracks[tid]['missing'] += 1
                 if self.tracks[tid]['missing'] > self.max_missing:
-                    del self.tracks[tid]
+                    self._drop(tid)
 
         for i in unmatched:
             cx, cy, cls_id = detections[i]
             self.tracks[self.next_id] = {
-                'cx': cx, 'cy': cy, 'prev_cy': cy,
+                'cx': cx, 'cy': cy, 'prev_cy': cy, 'first_cy': cy,
                 'cls': cls_id, 'missing': 0, 'counted': False,
             }
             self.next_id += 1
@@ -294,7 +303,9 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
 
         if yolo_model is not None:
             with _yolo_lock:
-                results = yolo_model(frame, verbose=False, conf=CONF)[0]
+                # imgsz=480 — the custom model was trained at 480; running at
+                # the 640 default is slower AND slightly less accurate here.
+                results = yolo_model(frame, verbose=False, conf=CONF, imgsz=480)[0]
 
             for box in results.boxes:
                 cls_id = int(box.cls[0].item())
@@ -330,6 +341,15 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
             if crossed_down or crossed_up:
                 trk['counted'] = True
                 label = VEHICLE_CLS.get(cls_id, 'Car')
+                with state._lock:
+                    state.total[label] = state.total.get(label, 0) + 1
+
+        # Safety net: a vehicle the tracker lost mid-journey still counts if
+        # its overall path (first seen → last seen) crossed the counting line.
+        for lost in tracker.removed:
+            first_cy, last_cy = lost.get('first_cy', lost['prev_cy']), lost['cy']
+            if (first_cy < line_y <= last_cy) or (first_cy > line_y >= last_cy):
+                label = VEHICLE_CLS.get(lost['cls'], 'Car')
                 with state._lock:
                     state.total[label] = state.total.get(label, 0) + 1
 
