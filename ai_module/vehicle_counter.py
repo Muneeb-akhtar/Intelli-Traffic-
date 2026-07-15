@@ -33,7 +33,7 @@ except ImportError:
 
 # ── Config ────────────────────────────────────────────────────────────────────
 PORT         = int(os.environ.get('PORT', 8081))
-YOLO_MODEL   = 'yolov8n.pt'
+YOLO_MODEL   = 'yolov8s.pt'   # small model — noticeably better truck/distant-vehicle detection than nano
 CONF         = 0.30   # lowered so small motorcycles/bikes are not missed
 TARGET_FPS   = 10         # per camera (4 cams × 10 = 40 YOLO calls/s)
 JPEG_QUALITY = 78
