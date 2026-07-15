@@ -685,7 +685,7 @@ def record_analytics():
         congestion = min(100, int(100 - sig['efficiency']))
     record = {
         'timestamp':          now.isoformat(),
-        'hour':               now.strftime('%H:%M'),
+        'hour':               now.strftime('%H:%M:%S'),
         'counts':             counts,
         'totalVehicles':      total,
         'averageWaitSeconds': round(avg_wait, 1),

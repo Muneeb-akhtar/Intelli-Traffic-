@@ -356,7 +356,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
     };
     setTimeout(signalLoop, 1000);
 
-    const analyticsRefresh = setInterval(fetchAnalytics,  10000);
+    const analyticsRefresh = setInterval(fetchAnalytics,  5000);
     const safetyRefresh    = setInterval(fetchSafetyLogs, 8000);
     const statusRefresh    = setInterval(fetchAiStatus,   5000);
 

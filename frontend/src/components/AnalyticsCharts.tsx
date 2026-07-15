@@ -31,15 +31,21 @@ const CustomTooltip = ({ active, payload, label }: {
 };
 
 export const AnalyticsCharts: React.FC<Props> = ({ data }) => {
-  const chartData = data.slice(-14);
+  // totalVehicles is a cumulative counter — plotting it raw gives a flat,
+  // ever-climbing line. Derive per-update flow (new vehicles since the
+  // previous snapshot) so the chart shows real traffic movement.
+  const chartData = data.slice(-15).map((r, i, arr) => ({
+    ...r,
+    flow: i === 0 ? 0 : Math.max(0, r.totalVehicles - arr[i - 1].totalVehicles),
+  })).slice(1);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
       <div className="card-light p-4 sm:p-5 bg-[var(--color-brand-sky)]/30">
         <div className="flex items-center justify-between gap-3 mb-4">
           <div>
-            <h3 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">Traffic volume</h3>
-            <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">Hourly vehicle count and congestion load</p>
+            <h3 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">Traffic flow</h3>
+            <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">New vehicles per update and congestion load</p>
           </div>
           <span className="badge badge-orange shrink-0">Live</span>
         </div>
@@ -62,7 +68,7 @@ export const AnalyticsCharts: React.FC<Props> = ({ data }) => {
               <Tooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
-                dataKey="totalVehicles"
+                dataKey="flow"
                 name="Vehicles"
                 stroke="var(--color-accent)"
                 strokeWidth={1.5}
@@ -85,7 +91,7 @@ export const AnalyticsCharts: React.FC<Props> = ({ data }) => {
         <div className="flex items-center justify-between gap-3 mb-4">
           <div>
             <h3 className="font-heading text-sm font-semibold text-[var(--color-corporate-text)]">Average wait time</h3>
-            <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">Adaptive cycle delay per hour (seconds)</p>
+            <p className="text-xs text-[var(--color-corporate-text-muted)] mt-0.5">Adaptive cycle delay per update (seconds)</p>
           </div>
           <span className="badge badge-neutral shrink-0">vs 60s static</span>
         </div>
