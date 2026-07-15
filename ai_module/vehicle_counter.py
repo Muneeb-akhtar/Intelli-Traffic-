@@ -58,14 +58,14 @@ VEHICLE_CLS = {
 }
 
 CLS_COLOR = {
-    0: (0,   165, 255),
-    1: (60,  60,  220),
-    2: (50,  205, 50),
-    3: (0,   165, 255),
-    5: (0,   165, 255),
-    6: (180, 50,  220),
-    7: (180, 50,  220),
-    8: (0,   165, 255),
+    0: (0,   165, 255),   # Bike       → orange
+    1: (230, 140, 0),     # Bus/Metro  → blue (red looked like an alert)
+    2: (50,  205, 50),    # Car        → green
+    3: (0,   165, 255),   # Cng        → orange
+    5: (0,   165, 255),   # Rickshaw   → orange
+    6: (180, 50,  220),   # Truck      → purple
+    7: (180, 50,  220),   # Mini-Truck → purple
+    8: (0,   165, 255),   # Cycle      → orange
 }
 
 COUNT_LINE_Y = 0.60
@@ -230,7 +230,9 @@ def draw_vehicle_box(frame, x1, y1, x2, y2, label, conf, cls_id):
     cv2.rectangle(frame, (x1, y1), (x2, y2), col, 2)
     txt = f"{label}  {conf:.2f}"
     (tw, th), _ = cv2.getTextSize(txt, cv2.FONT_HERSHEY_SIMPLEX, 0.42, 1)
-    ty = max(y1, th + 8)
+    # Keep the label below the 40px HUD bar (drawn later, it would cover
+    # labels of tall vehicles like buses whose boxes reach the frame top).
+    ty = max(y1, th + 8, 40 + th + 8)
     cv2.rectangle(frame, (x1, ty - th - 6), (x1 + tw + 8, ty + 2), col, -1)
     cv2.putText(frame, txt, (x1 + 4, ty - 2),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.42, (255, 255, 255), 1, cv2.LINE_AA)
