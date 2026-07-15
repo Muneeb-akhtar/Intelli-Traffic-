@@ -33,36 +33,39 @@ except ImportError:
 
 # ── Config ────────────────────────────────────────────────────────────────────
 PORT         = int(os.environ.get('PORT', 8081))
-YOLO_MODEL   = 'yolov8s.pt'   # small model — noticeably better truck/distant-vehicle detection than nano
-CONF         = 0.30   # lowered so small motorcycles/bikes are not missed
+# Custom model fine-tuned on South Asian (Bangladeshi) traffic — natively
+# detects rickshaws, CNGs, bikes, and mini-trucks, unlike COCO-trained YOLO.
+# Source: huggingface.co/abrarhameem398/traffice-detection-best
+YOLO_MODEL   = str(Path(__file__).resolve().parent / 'south_asian_traffic.pt')
+CONF         = 0.30
 TARGET_FPS   = 10         # per camera (4 cams × 10 = 40 YOLO calls/s)
 JPEG_QUALITY = 78
 FRAME_W      = 960
 FRAME_H      = 540
 
+# Class map for the custom South Asian model:
+# {0: Bike, 1: Bus, 2: Car, 3: Cng, 4: People, 5: Rickshaw,
+#  6: Truck, 7: Mini-Truck, 8: Cycle}  — People (4) intentionally excluded.
 VEHICLE_CLS = {
-    1: 'Rickshaw/Bike',
-    2: 'Car',
-    3: 'Rickshaw/Bike',
-    5: 'Bus/Metro',
-    7: 'Truck',
+    0: 'Rickshaw/Bike',   # Bike
+    1: 'Bus/Metro',       # Bus
+    2: 'Car',             # Car
+    3: 'Rickshaw/Bike',   # Cng (auto-rickshaw)
+    5: 'Rickshaw/Bike',   # Rickshaw
+    6: 'Truck',           # Truck
+    7: 'Truck',           # Mini-Truck
+    8: 'Rickshaw/Bike',   # Cycle
 }
 
-# Thresholds tuned for Lahore side/overhead camera angles.
-# rel_area = bounding-box pixels / total frame pixels.
-#   Auto-rickshaws appear small-to-medium (< 4 %)
-#   Buses/minibuses appear medium            (4 – 9 %)
-#   Actual goods trucks appear large         (>= 9 %)
-RICKSHAW_MAX_AREA = 0.040   # was 0.030 — catches larger auto-rickshaws
-BUS_MEDIUM_MAX    = 0.090   # new upper bound for bus range
-CAR_MAX_AREA      = 0.015   # tightened — only truly tiny YOLO-bus boxes → Car
-
 CLS_COLOR = {
-    1: (0,   165, 255),
+    0: (0,   165, 255),
+    1: (60,  60,  220),
     2: (50,  205, 50),
     3: (0,   165, 255),
-    5: (60,  60,  220),
+    5: (0,   165, 255),
+    6: (180, 50,  220),
     7: (180, 50,  220),
+    8: (0,   165, 255),
 }
 
 COUNT_LINE_Y = 0.60
@@ -296,53 +299,10 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
                 conf_val = float(box.conf[0].item())
                 x1, y1, x2, y2 = map(int, box.xyxy[0].tolist())
 
-                bw, bh = x2 - x1, y2 - y1
-                rel_area = (bw * bh) / (w * h)
-                aspect   = bh / max(bw, 1)
+                # The custom model natively distinguishes rickshaws, CNGs,
+                # bikes, and trucks — no COCO reclassification heuristics needed.
                 cx = (x1 + x2) // 2
                 cy = (y1 + y2) // 2
-
-                # ── Perspective-aware size: a vehicle near the top of the
-                # frame is far away, so its box is small even if the vehicle
-                # is large. Normalise area by depth before any size gating,
-                # otherwise distant trucks get relabelled as rickshaws.
-                depth = max(cy / h, 0.35)
-                norm_area = rel_area / (depth * depth)
-
-                # ── Rickshaw body-colour fraction: Lahore auto-rickshaws have
-                # saturated yellow/green bodies. Computed once, used to catch
-                # rickshaws that YOLO labels as Car OR Truck (COCO has no
-                # rickshaw class, so both mistakes are common).
-                roi = frame[max(y1, 0):max(y2, 1), max(x1, 0):max(x2, 1)]
-                rickshaw_frac = 0.0
-                if roi.size > 0:
-                    hsv  = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-                    hue, sat = hsv[:, :, 0], hsv[:, :, 1]
-                    mask = (sat > 60) & (hue >= 18) & (hue <= 95)
-                    rickshaw_frac = float(np.mean(mask))
-
-                # ── Reclassify YOLO "truck" (cls 7):
-                # a small box with a yellow/green body is a rickshaw no matter
-                # how confident YOLO is; otherwise only downsize when unsure.
-                if cls_id == 7:
-                    if norm_area < RICKSHAW_MAX_AREA * 1.5 and rickshaw_frac > 0.25:
-                        cls_id = 3          # rickshaw-coloured small box → Rickshaw/Bike
-                    elif conf_val < 0.50:
-                        if norm_area < RICKSHAW_MAX_AREA:
-                            cls_id = 3      # small + unsure → Rickshaw/Bike
-                        elif norm_area < BUS_MEDIUM_MAX:
-                            cls_id = 5      # medium + unsure → Bus/Metro
-                    # else: stays Truck (large goods vehicle)
-
-                # ── Only downgrade YOLO "bus" (cls 5) to Car if it is tiny
-                # after perspective correction AND YOLO was unsure.
-                if cls_id == 5 and conf_val < 0.50:
-                    if norm_area < CAR_MAX_AREA and aspect < 0.55:
-                        cls_id = 2          # very tiny wide box → Car
-
-                # ── Car boxes dominated by rickshaw colours → Rickshaw/Bike.
-                if cls_id == 2 and rickshaw_frac > 0.28:
-                    cls_id = 3
                 detections.append((cx, cy, cls_id))
                 raw_boxes.append((x1, y1, x2, y2, cls_id, conf_val))
 

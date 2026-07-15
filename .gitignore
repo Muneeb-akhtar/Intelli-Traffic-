@@ -31,6 +31,8 @@ Thumbs.db
 # ML model weights (large binary files)
 *.pt
 *.onnx
+# except the custom South Asian traffic model the app depends on
+!ai_module/south_asian_traffic.pt
 
 # Generated / large video files
 traffic_4way_simulation.mp4
