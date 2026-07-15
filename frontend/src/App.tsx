@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useMemo, useCallback, type ReactNode } from 'react';
 import {
   Radio, Activity, Timer, TrendingUp, Shield, BarChart3, MapPin,
-  Phone, FileText, ChevronRight, Download, Sun, Moon, LogOut, ChevronDown, RefreshCw
+  Phone, FileText, ChevronRight, Download, Sun, Moon, LogOut, ChevronDown, RefreshCw,
+  CheckCircle2
 } from 'lucide-react';
 import type { TrafficUpdatePayload, AnalyticsRecord, SafetyLogEntry, EngineSettings, LaneData } from './types';
 import { IntersectionVisualizer } from './components/IntersectionVisualizer';
@@ -216,7 +217,19 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleLogin = (name: string) => setUser(name);
+  const [welcome, setWelcome] = useState<string | null>(null);
+
+  const handleLogin = (name: string) => {
+    setUser(name);
+    setWelcome(name);
+  };
+
+  // Auto-dismiss the welcome toast after 4.5 s
+  useEffect(() => {
+    if (!welcome) return;
+    const t = setTimeout(() => setWelcome(null), 4500);
+    return () => clearTimeout(t);
+  }, [welcome]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -231,7 +244,21 @@ function App() {
   if (!authReady) return null;
   if (!user) return <LoginPage onLogin={handleLogin} />;
 
-  return <Dashboard user={user} onLogout={handleLogout} isDark={isDark} onToggleDark={() => setIsDark(d => !d)} />;
+  return (
+    <>
+      {welcome && (
+        <div className="welcome-toast" role="status">
+          <CheckCircle2 className="welcome-toast-icon" />
+          <div>
+            <p className="welcome-toast-title">Login successful</p>
+            <p className="welcome-toast-text">Welcome, {welcome}!</p>
+          </div>
+          <button className="welcome-toast-close" onClick={() => setWelcome(null)}>×</button>
+        </div>
+      )}
+      <Dashboard user={user} onLogout={handleLogout} isDark={isDark} onToggleDark={() => setIsDark(d => !d)} />
+    </>
+  );
 }
 
 function Dashboard({ user, onLogout, isDark, onToggleDark }: {
