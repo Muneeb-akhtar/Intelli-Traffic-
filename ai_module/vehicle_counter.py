@@ -309,13 +309,29 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
                 depth = max(cy / h, 0.35)
                 norm_area = rel_area / (depth * depth)
 
-                # ── Reclassify YOLO "truck" (cls 7) only when YOLO itself is
-                # unsure (< 0.50). A confident truck detection stays a Truck.
-                if cls_id == 7 and conf_val < 0.50:
-                    if norm_area < RICKSHAW_MAX_AREA:
-                        cls_id = 3          # small + unsure → Rickshaw/Bike
-                    elif norm_area < BUS_MEDIUM_MAX:
-                        cls_id = 5          # medium + unsure → Bus/Metro
+                # ── Rickshaw body-colour fraction: Lahore auto-rickshaws have
+                # saturated yellow/green bodies. Computed once, used to catch
+                # rickshaws that YOLO labels as Car OR Truck (COCO has no
+                # rickshaw class, so both mistakes are common).
+                roi = frame[max(y1, 0):max(y2, 1), max(x1, 0):max(x2, 1)]
+                rickshaw_frac = 0.0
+                if roi.size > 0:
+                    hsv  = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+                    hue, sat = hsv[:, :, 0], hsv[:, :, 1]
+                    mask = (sat > 60) & (hue >= 18) & (hue <= 95)
+                    rickshaw_frac = float(np.mean(mask))
+
+                # ── Reclassify YOLO "truck" (cls 7):
+                # a small box with a yellow/green body is a rickshaw no matter
+                # how confident YOLO is; otherwise only downsize when unsure.
+                if cls_id == 7:
+                    if norm_area < RICKSHAW_MAX_AREA * 1.5 and rickshaw_frac > 0.25:
+                        cls_id = 3          # rickshaw-coloured small box → Rickshaw/Bike
+                    elif conf_val < 0.50:
+                        if norm_area < RICKSHAW_MAX_AREA:
+                            cls_id = 3      # small + unsure → Rickshaw/Bike
+                        elif norm_area < BUS_MEDIUM_MAX:
+                            cls_id = 5      # medium + unsure → Bus/Metro
                     # else: stays Truck (large goods vehicle)
 
                 # ── Only downgrade YOLO "bus" (cls 5) to Car if it is tiny
@@ -324,18 +340,9 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
                     if norm_area < CAR_MAX_AREA and aspect < 0.55:
                         cls_id = 2          # very tiny wide box → Car
 
-                # ── Auto-rickshaws are not a COCO class, so YOLO confidently
-                # labels them "Car". Lahore rickshaws have yellow/green bodies;
-                # if a car box is dominated by saturated yellow-green pixels,
-                # reclassify it as Rickshaw/Bike.
-                if cls_id == 2:
-                    roi = frame[max(y1, 0):max(y2, 1), max(x1, 0):max(x2, 1)]
-                    if roi.size > 0:
-                        hsv  = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-                        hue, sat = hsv[:, :, 0], hsv[:, :, 1]
-                        mask = (sat > 80) & (hue >= 18) & (hue <= 85)
-                        if float(np.mean(mask)) > 0.28:
-                            cls_id = 3      # yellow/green body → Rickshaw/Bike
+                # ── Car boxes dominated by rickshaw colours → Rickshaw/Bike.
+                if cls_id == 2 and rickshaw_frac > 0.28:
+                    cls_id = 3
                 detections.append((cx, cy, cls_id))
                 raw_boxes.append((x1, y1, x2, y2, cls_id, conf_val))
 
