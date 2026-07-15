@@ -299,26 +299,30 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
                 bw, bh = x2 - x1, y2 - y1
                 rel_area = (bw * bh) / (w * h)
                 aspect   = bh / max(bw, 1)
-
-                # ── Reclassify YOLO "truck" (cls 7) by bounding-box size.
-                # Side/overhead cameras show buses wider than tall, so the
-                # old `aspect > 0.85` check was always False for buses —
-                # everything stayed "Truck". Remove aspect check entirely.
-                if cls_id == 7:
-                    if rel_area < RICKSHAW_MAX_AREA:
-                        cls_id = 3          # small  → Rickshaw/Bike
-                    elif rel_area < BUS_MEDIUM_MAX:
-                        cls_id = 5          # medium → Bus/Metro
-                    # else rel_area >= 0.090: stays as Truck (large goods vehicle)
-
-                # ── Only downgrade YOLO "bus" (cls 5) to Car if it is tiny.
-                # The old threshold (6 %) was too loose and turned real buses into cars.
-                if cls_id == 5:
-                    if rel_area < CAR_MAX_AREA and aspect < 0.55:
-                        cls_id = 2          # very tiny wide box → Car
-
                 cx = (x1 + x2) // 2
                 cy = (y1 + y2) // 2
+
+                # ── Perspective-aware size: a vehicle near the top of the
+                # frame is far away, so its box is small even if the vehicle
+                # is large. Normalise area by depth before any size gating,
+                # otherwise distant trucks get relabelled as rickshaws.
+                depth = max(cy / h, 0.35)
+                norm_area = rel_area / (depth * depth)
+
+                # ── Reclassify YOLO "truck" (cls 7) only when YOLO itself is
+                # unsure (< 0.50). A confident truck detection stays a Truck.
+                if cls_id == 7 and conf_val < 0.50:
+                    if norm_area < RICKSHAW_MAX_AREA:
+                        cls_id = 3          # small + unsure → Rickshaw/Bike
+                    elif norm_area < BUS_MEDIUM_MAX:
+                        cls_id = 5          # medium + unsure → Bus/Metro
+                    # else: stays Truck (large goods vehicle)
+
+                # ── Only downgrade YOLO "bus" (cls 5) to Car if it is tiny
+                # after perspective correction AND YOLO was unsure.
+                if cls_id == 5 and conf_val < 0.50:
+                    if norm_area < CAR_MAX_AREA and aspect < 0.55:
+                        cls_id = 2          # very tiny wide box → Car
                 detections.append((cx, cy, cls_id))
                 raw_boxes.append((x1, y1, x2, y2, cls_id, conf_val))
 
