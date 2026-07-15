@@ -330,6 +330,11 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
         with state._lock:
             state.on_screen = cur_on.copy()
 
+        # Vertical span (y1, y2) of each detection box, keyed by centroid, so
+        # large vehicles can be counted by box overlap rather than centroid.
+        box_span = {((bx1 + bx2) // 2, (by1 + by2) // 2): (by1, by2)
+                    for bx1, by1, bx2, by2, _, _ in raw_boxes}
+
         for cx, cy, cls_id, tid in tracked:
             trk = tracker.tracks.get(tid)
             if trk is None or trk.get('counted'):
@@ -338,7 +343,12 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
             # lane moves up the frame and was previously never counted.
             crossed_down = trk['prev_cy'] < line_y <= cy
             crossed_up   = trk['prev_cy'] > line_y >= cy
-            if crossed_down or crossed_up:
+            # Large vehicles (buses/trucks): the centroid may never cross the
+            # line even though the vehicle body covers it — count when the
+            # bounding box overlaps the line.
+            span    = box_span.get((cx, cy))
+            on_line = span is not None and span[0] <= line_y <= span[1]
+            if crossed_down or crossed_up or on_line:
                 trk['counted'] = True
                 label = VEHICLE_CLS.get(cls_id, 'Car')
                 with state._lock:
