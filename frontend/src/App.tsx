@@ -566,20 +566,34 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                         <p className="text-[10px] text-[var(--color-corporate-text-muted)] mt-0.5">Traffic Operator</p>
                       </div>
 
-                      {/* Dark mode toggle */}
-                      <button
-                        type="button"
-                        onClick={() => { onToggleDark(); setProfileOpen(false); }}
-                        className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[var(--color-corporate-text)] hover:bg-[var(--color-corporate-muted)] transition-colors"
-                      >
-                        <span className="flex items-center gap-2.5">
-                          {isDark ? <Moon className="w-4 h-4 text-indigo-400" /> : <Sun className="w-4 h-4 text-amber-400" />}
-                          Dark mode
-                        </span>
-                        <span className={`w-8 h-4 rounded-full transition-colors ${isDark ? 'bg-accent' : 'bg-[var(--color-corporate-border)]'} relative shrink-0`}>
-                          <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition-transform ${isDark ? 'translate-x-4' : 'translate-x-0.5'}`} />
-                        </span>
-                      </button>
+                      {/* Theme selector */}
+                      <div className="px-4 py-2.5">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-corporate-text-muted)] mb-2">Theme</p>
+                        <div className="flex rounded-lg border border-[var(--color-corporate-border)] overflow-hidden">
+                          <button
+                            type="button"
+                            onClick={() => { if (isDark) onToggleDark(); }}
+                            className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 text-xs font-semibold transition-colors ${
+                              !isDark
+                                ? 'bg-accent text-white'
+                                : 'text-[var(--color-corporate-text-muted)] hover:bg-[var(--color-corporate-muted)]'
+                            }`}
+                          >
+                            <Sun className="w-3.5 h-3.5" /> Light
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => { if (!isDark) onToggleDark(); }}
+                            className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 text-xs font-semibold transition-colors ${
+                              isDark
+                                ? 'bg-accent text-white'
+                                : 'text-[var(--color-corporate-text-muted)] hover:bg-[var(--color-corporate-muted)]'
+                            }`}
+                          >
+                            <Moon className="w-3.5 h-3.5" /> Dark
+                          </button>
+                        </div>
+                      </div>
 
                       {/* Divider */}
                       <div className="mx-4 border-t border-[var(--color-corporate-border)]" />
