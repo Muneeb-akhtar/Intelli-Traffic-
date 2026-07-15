@@ -820,7 +820,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                     <div className="flex items-center gap-2 mb-3">
                       <MapPin className="w-4 h-4 text-accent shrink-0" />
                       <span className="text-sm font-semibold text-[var(--color-corporate-text)]">Active Site</span>
-                      <span className="ml-auto badge badge-orange text-[10px]">Live</span>
+                      <span className="ml-auto badge badge-green text-[10px]">Live</span>
                     </div>
                     <p className="text-base font-bold text-[var(--color-corporate-text)]">Mall Road</p>
                     <p className="text-sm text-[var(--color-corporate-text-muted)]">Gulberg Intersection, Lahore</p>
