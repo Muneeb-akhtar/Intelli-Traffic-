@@ -244,6 +244,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
   const [analytics, setAnalytics] = useState<AnalyticsRecord[]>([]);
   const [safetyLogs, setSafetyLogs] = useState<SafetyLogEntry[]>([]);
   const [connected, setConnected] = useState(false);
+  const [tickKey, setTickKey]     = useState(0);
   const [aiOnline, setAiOnline] = useState<boolean | null>(null); // null = checking
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>('live');
@@ -299,6 +300,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
         const [sig, counts] = await Promise.all([sigRes.json(), cntRes.json()]);
         setData(mapApiToPayload(sig, counts));
         setConnected(true);
+        setTickKey(k => k + 1);
         setError(null);
       } else { setConnected(false); }
     } catch { setConnected(false); }
@@ -490,7 +492,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
               {/* Live status */}
               <div className={`status-badge ${connected ? 'status-connected' : 'status-disconnected'}`}>
                 <span className="status-dot-wrap">
-                  <span className="status-ring" />
+                  <span key={tickKey} className="status-ring" />
                   <span className="status-dot-core" />
                 </span>
                 Live

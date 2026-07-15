@@ -579,7 +579,7 @@ a:focus-visible {
   border-radius: 50%;
   background: currentColor;
   opacity: 0.5;
-  animation: sonar-scale 2.2s ease-out infinite;
+  animation: sonar-scale 1.2s ease-out 1;
   will-change: transform, opacity;
 }
 
