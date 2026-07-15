@@ -573,8 +573,8 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                         className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[var(--color-corporate-text)] hover:bg-[var(--color-corporate-muted)] transition-colors"
                       >
                         <span className="flex items-center gap-2.5">
-                          {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-400" />}
-                          {isDark ? 'Light mode' : 'Dark mode'}
+                          {isDark ? <Moon className="w-4 h-4 text-indigo-400" /> : <Sun className="w-4 h-4 text-amber-400" />}
+                          Dark mode
                         </span>
                         <span className={`w-8 h-4 rounded-full transition-colors ${isDark ? 'bg-accent' : 'bg-[var(--color-corporate-border)]'} relative shrink-0`}>
                           <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition-transform ${isDark ? 'translate-x-4' : 'translate-x-0.5'}`} />
