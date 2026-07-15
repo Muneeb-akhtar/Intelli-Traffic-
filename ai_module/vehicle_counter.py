@@ -34,7 +34,7 @@ except ImportError:
 # ── Config ────────────────────────────────────────────────────────────────────
 PORT         = int(os.environ.get('PORT', 8081))
 YOLO_MODEL   = 'yolov8n.pt'
-CONF         = 0.35
+CONF         = 0.30   # lowered so small motorcycles/bikes are not missed
 TARGET_FPS   = 10         # per camera (4 cams × 10 = 40 YOLO calls/s)
 JPEG_QUALITY = 78
 FRAME_W      = 960
@@ -323,6 +323,19 @@ def processing_loop(state: State, tracker: CentroidTracker, video_path: str | No
                 if cls_id == 5 and conf_val < 0.50:
                     if norm_area < CAR_MAX_AREA and aspect < 0.55:
                         cls_id = 2          # very tiny wide box → Car
+
+                # ── Auto-rickshaws are not a COCO class, so YOLO confidently
+                # labels them "Car". Lahore rickshaws have yellow/green bodies;
+                # if a car box is dominated by saturated yellow-green pixels,
+                # reclassify it as Rickshaw/Bike.
+                if cls_id == 2:
+                    roi = frame[max(y1, 0):max(y2, 1), max(x1, 0):max(x2, 1)]
+                    if roi.size > 0:
+                        hsv  = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+                        hue, sat = hsv[:, :, 0], hsv[:, :, 1]
+                        mask = (sat > 80) & (hue >= 18) & (hue <= 85)
+                        if float(np.mean(mask)) > 0.28:
+                            cls_id = 3      # yellow/green body → Rickshaw/Bike
                 detections.append((cx, cy, cls_id))
                 raw_boxes.append((x1, y1, x2, y2, cls_id, conf_val))
 
