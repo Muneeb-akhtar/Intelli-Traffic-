@@ -117,12 +117,14 @@ function mapApiToPayload(sig: Record<string, any>, counts: Record<string, any>):
   const anyOverride = Object.values(sig.overrides ?? {}).some((v: unknown) => v != null);
   const laneData: LaneData = {};
   Object.entries(CAMERA_DIRS).forEach(([id, dir]) => {
-    const c = counts?.[id] ?? {};
+    // per_camera holds live on-screen counts per camera id, keyed by the
+    // backend's class labels: Car, Rickshaw/Bike, Bus/Metro, Truck.
+    const c = counts?.per_camera?.[id] ?? {};
     laneData[dir] = {
-      car:        c['Car']       ?? 0,
-      motorcycle: (c['Motorcycle'] ?? 0) + (c['Rick/Bike'] ?? 0),
-      truck:      c['Truck']     ?? 0,
-      bus:        c['Bus']       ?? c['Bus/Metro'] ?? 0,
+      car:        c['Car']           ?? 0,
+      motorcycle: c['Rickshaw/Bike'] ?? 0,
+      truck:      c['Truck']         ?? 0,
+      bus:        c['Bus/Metro']     ?? 0,
     };
   });
   return {

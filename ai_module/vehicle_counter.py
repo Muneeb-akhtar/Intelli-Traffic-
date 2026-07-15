@@ -748,16 +748,19 @@ def api_counts_all():
     labels = list(dict.fromkeys(VEHICLE_CLS.values()))
     agg_total    = {v: 0 for v in labels}
     agg_on_screen = {v: 0 for v in labels}
+    per_camera: dict[str, dict] = {}
     fps_sum = 0.0
     for cam in cameras:
         snap = cam['state'].snapshot()
         for v in labels:
             agg_total[v]     += snap['total'].get(v, 0)
             agg_on_screen[v] += snap['on_screen'].get(v, 0)
+        per_camera[str(cam['id'])] = snap['on_screen']
         fps_sum += snap['fps']
     return jsonify({
         'total':       agg_total,
         'on_screen':   agg_on_screen,
+        'per_camera':  per_camera,
         'fps':         round(fps_sum / max(len(cameras), 1), 1),
         'source':      'all cameras',
         'grand_total': sum(agg_total.values()),
