@@ -12,13 +12,15 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   if (req.method === 'GET') {
+    // Fetch the NEWEST 200 rows, then reverse to chronological order —
+    // ascending+limit would return the oldest rows and hide today's data.
     const { data, error } = await supabase
       .from('analytics')
       .select('*')
-      .order('timestamp', { ascending: true })
+      .order('timestamp', { ascending: false })
       .limit(200);
     if (error) return res.status(500).json({ error: error.message });
-    return res.status(200).json(data);
+    return res.status(200).json(data.reverse());
   }
 
   if (req.method === 'POST') {

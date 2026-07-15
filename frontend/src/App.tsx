@@ -431,30 +431,46 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
   };
 
   const handleExportCSV = useCallback(() => {
-    if (analytics.length === 0) {
+    const today = new Date().toISOString().slice(0, 10);
+    // Export only TODAY's records so the report matches its title.
+    const todays = analytics.filter(r => (r.timestamp ?? '').startsWith(today));
+    const source = todays.length > 0 ? todays : analytics;
+
+    if (source.length === 0) {
       alert('No analytics data yet. Make sure the backend is running and wait for a few traffic cycles.');
       return;
     }
 
-    const headers = ['Timestamp', 'Hour', 'Northbound', 'Southbound', 'Eastbound', 'Westbound', 'Total Vehicles', 'Avg Wait (s)', 'Congestion Index'];
-    const rows = analytics.map(r => [
+    const meta = [
+      `Intelli Traffic — Daily Traffic Report`,
+      `Report date:,${today}`,
+      `Generated at:,${new Date().toLocaleString()}`,
+      `Data source:,Supabase (analytics table) — recorded live by the AI module`,
+      `Snapshots in report:,${source.length}`,
+      todays.length === 0 ? `Note:,No snapshots recorded today — showing latest stored data instead` : '',
+      '',
+    ].filter(Boolean);
+
+    const headers = ['Timestamp', 'Time', 'Northbound', 'Southbound', 'Eastbound', 'Westbound', 'Total Vehicles', 'Avg Wait (s)', 'Congestion Index'];
+    const rows = source.map(r => [
       r.timestamp,
       r.hour,
-      r.counts.Northbound,
-      r.counts.Southbound,
-      r.counts.Eastbound,
-      r.counts.Westbound,
-      r.totalVehicles,
-      r.averageWaitSeconds.toFixed(1),
-      r.congestionIndex
+      r.counts?.Northbound ?? 0,
+      r.counts?.Southbound ?? 0,
+      r.counts?.Eastbound  ?? 0,
+      r.counts?.Westbound  ?? 0,
+      r.totalVehicles ?? 0,
+      (r.averageWaitSeconds ?? 0).toFixed(1),
+      r.congestionIndex ?? 0,
     ].join(','));
 
-    const csv = [headers.join(','), ...rows].join('\n');
+    // BOM so Excel opens the file as UTF-8 without mangling characters
+    const csv = '\uFEFF' + [...meta, headers.join(','), ...rows].join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `intelli_traffic_report_${new Date().toISOString().slice(0, 10)}.csv`;
+    link.download = `intelli_traffic_report_${today}.csv`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1052,7 +1068,7 @@ function Dashboard({ user, onLogout, isDark, onToggleDark }: {
                   </h3>
                 </div>
                 <p className="text-xs text-[var(--color-corporate-text-muted)] leading-relaxed">
-                  Time-series traffic volume from the AI module — per-camera counts, average signal wait times, and congestion index. Recorded every 30 seconds while the AI backend is running.
+                  Today's traffic report — per-camera counts, average signal wait times, and congestion index. Recorded every 10 seconds by the AI module and stored permanently in the Supabase database.
                 </p>
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <span className="text-xs text-[var(--color-corporate-text-muted)] tabular-nums">
